@@ -1,0 +1,3 @@
+meeteo_meeteo_homepage:
+    path:     /
+    defaults: { _controller: MeeteoMeeteoBundle:Default:index }
