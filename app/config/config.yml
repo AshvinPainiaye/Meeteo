@@ -69,3 +69,15 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Meeteo\MeeteoBundle\Entity\User
+    
+vich_uploader:
+    db_driver: orm
+    
+    mappings:
+        report_image:
+            uri_prefix:         /images/reports
+            upload_destination: %kernel.root_dir%/../web/images/reports
+    
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
