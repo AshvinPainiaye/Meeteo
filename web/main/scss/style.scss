@@ -1,15 +1,31 @@
-#map {
-  height: 100%;
-}
-
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-
-footer{
-  padding: 50px 0;
-  background-color: #fafafa;
+/* DEBUT NAV */
+.navbar-default{
+  background-color: transparent;
+  border:none;
+  background-color:#ffffff;
+  .navbar-brand{
+    padding: 25px;
+  }
+  .navbar-nav {
+    li {
+      a {
+        padding: 20px;
+      }
+    }
+  }
 }
+
+/* FIN NAV */
+
+
+/* DEBUT GOOGLE MAP */
+#map {
+  height: 100%;
+}
+/* FIN GOOGLE MAP */
