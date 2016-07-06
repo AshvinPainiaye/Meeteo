@@ -1,24 +1,110 @@
 html, body {
   height: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: #f5f5f5; }
 
 /* DEBUT NAV */
 .navbar-default {
-  background-color: transparent;
+  background-color: #051a42;
   border: none;
-  background-color: #ffffff;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  border-radius: 0; }
+  .navbar-default .navbar-toggle {
+    border: none;
+    float: left;
+    background-color: #07296a;
+    padding: 18px 18px;
+    margin-top: 0;
+    border-radius: 0;
+    margin-top: 0px;
+    margin-bottom: 0px; }
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+      background-color: #07296a; }
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #ffffff; }
   .navbar-default .navbar-brand {
-    padding: 20px; }
+    color: #ffffff; }
+    .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+      color: #ffffff;
+      opacity: 0.7; }
   .navbar-default .navbar-nav li a {
-    padding: 20px; }
+    color: #ffffff; }
+    .navbar-default .navbar-nav li a:focus, .navbar-default .navbar-nav li a:hover {
+      color: #ffffff;
+      opacity: 0.7; }
 
 /* FIN NAV */
 /* DEBUT GOOGLE MAP */
 #map {
-  height: 90%; }
+  height: 91%; }
 
+/* debut search */
+.controls {
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none; }
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px; }
+
+#pac-input:focus {
+  border-color: #ffffff; }
+
+.pac-container {
+  font-family: Roboto; }
+
+#type-selector {
+  color: #fff;
+  background-color: #ffffff;
+  padding: 5px 11px 0px 11px; }
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300; }
+
+#target {
+  width: 345px; }
+
+/* fin search */
 /* FIN GOOGLE MAP */
+/* DEBUT FORMULAIRE */
+#formulaire form {
+  margin-top: 50px; }
+  #formulaire form #username, #formulaire form #password {
+    border-radius: 0;
+    background-color: #fff;
+    width: 300px;
+    border: 2px solid #051a42;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 40px;
+    outline: none; }
+  #formulaire form #fos_user_registration_form_email, #formulaire form #fos_user_registration_form_username, #formulaire form #fos_user_registration_form_plainPassword_first, #formulaire form #fos_user_registration_form_plainPassword_second {
+    border-radius: 0;
+    background-color: #fff;
+    width: 100%;
+    border: 2px solid #051a42;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 40px;
+    outline: none; }
+
+/* FIN FORMULAIRE */
 
 /*# sourceMappingURL=main.css.map */

@@ -6,11 +6,11 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -69,15 +69,15 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Meeteo\MeeteoBundle\Entity\User
-    
+
 vich_uploader:
     db_driver: orm
-    
+
     mappings:
         report_image:
             uri_prefix:         /images/reports
             upload_destination: %kernel.root_dir%/../web/images/reports
-    
+
             inject_on_load:     true
             delete_on_update:   true
             delete_on_remove:   true
