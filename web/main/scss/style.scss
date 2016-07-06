@@ -9,8 +9,9 @@ html, body {
   background-color: transparent;
   border:none;
   background-color:#ffffff;
+  margin-bottom: 0;
   .navbar-brand{
-    padding: 25px;
+    padding: 20px;
   }
   .navbar-nav {
     li {
@@ -25,7 +26,8 @@ html, body {
 
 
 /* DEBUT GOOGLE MAP */
-#map {
-  height: 100%;
+  #map {
+    height: 90%
 }
+
 /* FIN GOOGLE MAP */
