@@ -46,15 +46,23 @@ html, body {
         }
       }
     }
-    .dropdown-menu > li > a {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: 400;
-    line-height: 1.42857143;
-    color: #333;
-    white-space: nowrap;
-}
+    .dropdown-menu {
+      li {
+        a {
+          display: block;
+          padding: 3px 20px;
+          clear: both;
+          font-weight: 400;
+          line-height: 1.42857143;
+          color: #333;
+          white-space: nowrap;
+          &:hover{
+            color:$couleur1;
+            background-color:transparent;
+          }
+        }
+      }
+    }
   }
 }
 /* FIN NAV */
@@ -133,7 +141,7 @@ html, body {
       height: 40px;
       outline: none;
     }
-    #fos_user_registration_form_email, #fos_user_registration_form_username, #fos_user_registration_form_plainPassword_first, #fos_user_registration_form_plainPassword_second{
+    #fos_user_registration_form_email, #fos_user_registration_form_username, #fos_user_registration_form_plainPassword_first, #fos_user_registration_form_plainPassword_second, #fos_user_change_password_form_current_password, #fos_user_change_password_form_plainPassword_first, #fos_user_change_password_form_plainPassword_second, #fos_user_profile_form_username, #fos_user_profile_form_email, #fos_user_profile_form_current_password{
       border-radius: 0;
       background-color: #fff;
       width: 100%;

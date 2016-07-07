@@ -33,7 +33,7 @@ html, body {
     .navbar-default .navbar-nav li a:focus, .navbar-default .navbar-nav li a:hover {
       color: #ffffff;
       opacity: 0.7; }
-  .navbar-default .navbar-nav .dropdown-menu > li > a {
+  .navbar-default .navbar-nav .dropdown-menu li a {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -41,6 +41,9 @@ html, body {
     line-height: 1.42857143;
     color: #333;
     white-space: nowrap; }
+    .navbar-default .navbar-nav .dropdown-menu li a:hover {
+      color: #051a42;
+      background-color: transparent; }
 
 /* FIN NAV */
 /* DEBUT GOOGLE MAP */
@@ -101,7 +104,7 @@ html, body {
     -moz-box-sizing: border-box;
     height: 40px;
     outline: none; }
-  #formulaire form #fos_user_registration_form_email, #formulaire form #fos_user_registration_form_username, #formulaire form #fos_user_registration_form_plainPassword_first, #formulaire form #fos_user_registration_form_plainPassword_second {
+  #formulaire form #fos_user_registration_form_email, #formulaire form #fos_user_registration_form_username, #formulaire form #fos_user_registration_form_plainPassword_first, #formulaire form #fos_user_registration_form_plainPassword_second, #formulaire form #fos_user_change_password_form_current_password, #formulaire form #fos_user_change_password_form_plainPassword_first, #formulaire form #fos_user_change_password_form_plainPassword_second, #formulaire form #fos_user_profile_form_username, #formulaire form #fos_user_profile_form_email, #formulaire form #fos_user_profile_form_current_password {
     border-radius: 0;
     background-color: #fff;
     width: 100%;
