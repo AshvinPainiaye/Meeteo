@@ -2,3 +2,9 @@ services:
 #    meeteo_meeteo.example:
 #        class: Meeteo\MeeteoBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    user.registration_listener:
+       class: Meeteo\MeeteoBundle\EventListener\RegistrationListener
+       arguments: [@router]
+       tags:
+           - { name: kernel.event_subscriber }
