@@ -78,6 +78,6 @@ vich_uploader:
             uri_prefix:         /images/reports
             upload_destination: %kernel.root_dir%/../web/images/reports
 
-            inject_on_load:     true
+            inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true

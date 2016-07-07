@@ -11,6 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="report")
  * @ORM\Entity(repositoryClass="Meeteo\MeeteoBundle\Repository\ReportRepository")
+ * @Vich\Uploadable
  */
 class Report
 {
@@ -64,13 +65,6 @@ class Report
      * @ORM\Column(name="lon", type="float")
      */
     private $lon;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imageName", type="string", length=255, nullable=true)
-     */
-    private $imageName;
     
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -80,6 +74,13 @@ class Report
      * @var File
      */
     private $imageFile;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imageName", type="string", length=255, nullable=true)
+     */
+    private $imageName;
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
@@ -282,7 +283,7 @@ class Report
         if ($image) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTime('now');
+            $this->date = new \DateTime('now');
         }
 
         return $this;
@@ -295,5 +296,28 @@ class Report
     {
         return $this->imageFile;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \Meeteo\MeeteoBundle\Entity\User $user
+     *
+     * @return Report
+     */
+    public function setUser(\Meeteo\MeeteoBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Meeteo\MeeteoBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}
