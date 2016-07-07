@@ -16,14 +16,41 @@ class ReportController extends Controller {
         $report = new Report();
         $report->setDate(new \DateTime('now'));
         $report->setLat($lat);
-        $report->setLat($lon);
+        $report->setLon($lon);
 
         $form = $this->createFormBuilder($report)
-                ->add('weather', ChoiceType::class)
-                ->add('temperature', ChoiceType::class)
-                ->add('wind', ChoiceType::class)
+                ->add('weather', ChoiceType::class, array(
+                  'choices' => array(
+                    0 => 'Ensoleillé',
+                    1 => 'Nuageux',
+                    2 => 'Pluvieux',
+                    3 => 'Brume',
+                    4 => 'Neige',
+                    5 => 'Grèle',
+                  ),
+                ))
+                ->add('temperature', ChoiceType::class, array(
+                  'choices' => array(
+                    0 => 'Très froid',
+                    1 => 'Froid',
+                    2 => 'Idéale',
+                    3 => 'Chaud',
+                    4 => 'Très chaud',
+                  ),
+                ))
+                ->add('wind', ChoiceType::class, array(
+                  'choices' => array(
+                    0 => 'Pas de vent',
+                    1 => 'Vent modéré',
+                    2 => 'Vent assez fort',
+                    3 => 'Vent fort',
+                    4 => 'Cyclone',
+                  ),
+                ))
+                // ->add('wind', ChoiceType::class)
                 ->add('imageFile',  VichImageType::class)
                 ->add('save', SubmitType::class, array('label' => 'Meeteo'))
+
                 ->getForm();
 
         $form->handleRequest($request);
@@ -44,7 +71,7 @@ class ReportController extends Controller {
             //$em->persist($user);
             $em->persist($report);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('meeteo_meeteo_homepage');
         }
 
         return $this->render('MeeteoMeeteoBundle:Report:report.html.twig', array(
