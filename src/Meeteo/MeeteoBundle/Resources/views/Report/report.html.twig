@@ -1,8 +1,53 @@
 {% extends "::base.html.twig" %}
 
+{% block map %}{% endblock %}
+
 {% block body %}
-<h1>Welcome to the Report:Report page</h1>
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+
+<section id="formulaire">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+
+      {{ form_start(form) }}
+
+      <div class="form-group">
+        {#{ form_label(form.weather) }#}
+        <label for="">Météo</label>
+        {{ form_widget(form.weather, {'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.weather) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.temperature) }}
+        {{ form_widget(form.temperature, {'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.temperature) }}
+      </div>
+
+      <div class="form-group">
+        {#{ form_label(form.wind) }#}
+        <label for="">Vent</label>
+        {{ form_widget(form.wind, {'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.wind) }}
+      </div>
+
+      <div class="form-group">
+        {#{ form_label(form.imageFile) }#}
+        {{ form_widget(form.imageFile) }}
+        {{ form_errors(form.imageFile) }}
+      </div>
+
+      <div>
+        <input type="submit" class="btn btn-success" value="Notifier"/>
+      </div>
+
+
+      {#{ form_widget(form) }#}
+      {{ form_end(form) }}
+
+    </div>
+  </div>
+</div>
+</section>
+
 {% endblock %}

@@ -47,9 +47,8 @@ class ReportController extends Controller {
                     4 => 'Cyclone',
                   ),
                 ))
-                // ->add('wind', ChoiceType::class)
-                ->add('imageFile',  VichImageType::class)
-                ->add('save', SubmitType::class, array('label' => 'Meeteo'))
+                ->add('imageFile',  VichImageType::class, array('label' => 'Photo'))
+              //  ->add('save', SubmitType::class, array('label' => 'Meeteo'))
 
                 ->getForm();
 
