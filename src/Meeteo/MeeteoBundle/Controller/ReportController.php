@@ -11,12 +11,12 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ReportController extends Controller {
 
-    public function ReportAction(Request $request, $lat, $lon) {
+    public function ReportAction(Request $request) {
         // create a task and give it some dummy data for this example
         $report = new Report();
         $report->setDate(new \DateTime('now'));
-        $report->setLat($lat);
-        $report->setLon($lon);
+        $report->setLat(20);
+        $report->setLon(20);
 
         $form = $this->createFormBuilder($report)
                 ->add('weather', ChoiceType::class, array(
