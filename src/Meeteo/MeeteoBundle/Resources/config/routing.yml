@@ -3,5 +3,5 @@ meeteo_meeteo_homepage:
     defaults: { _controller: MeeteoMeeteoBundle:Default:index }
 
 _report:
-    path:     /report/{lat}/{lon}
+    path:     /report
     defaults: { _controller: MeeteoMeeteoBundle:Report:Report }
