@@ -163,7 +163,7 @@ function initMap() {
   setMarkers(map);
 }
 var listeReports = [{% for report in listereports %}
-  [ {{report.lat}}, {{report.lon }}],
+  [ {{report.lat}}, {{report.lon }}, 'Météo: {{report.weather}} / Temperature: {{report.temperature}} / Vent: {{report.wind}}'],
   {% endfor %}];
 
   function setMarkers(map) {
@@ -172,6 +172,7 @@ var listeReports = [{% for report in listereports %}
       var marker = new google.maps.Marker({
         position: {lat: report[0], lng: report[1]},
         map: map,
+        title: report[2],
       });
     }
   }
