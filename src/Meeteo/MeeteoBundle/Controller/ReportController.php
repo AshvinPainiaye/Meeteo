@@ -1,11 +1,15 @@
 <?php
+
 namespace Meeteo\MeeteoBundle\Controller;
+
 use Meeteo\MeeteoBundle\Entity\Report;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+
 class ReportController extends Controller {
+
     public function ReportAction(Request $request, $lat, $lon) {
         // Create a report and give it a date, latitude, longitude
         $report = new Report();
@@ -44,7 +48,9 @@ class ReportController extends Controller {
                 ))
                 ->add('imageFile', VichImageType::class, array('label' => 'Photo'))
                 ->getForm();
+        
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             // Get connected user
             $user = $this->get('security.token_storage')->getToken()->getUser();
@@ -60,4 +66,5 @@ class ReportController extends Controller {
                     'form' => $form->createView(),
         ));
     }
+
 }
