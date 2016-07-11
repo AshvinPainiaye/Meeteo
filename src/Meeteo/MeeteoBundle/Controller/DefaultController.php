@@ -13,7 +13,7 @@ class DefaultController extends Controller {
 
         $listereports = $repository->findAll();
 
-        if (null !== $listereports) {
+        if (!$listereports) {
             throw $this->createNotFoundException("Aucun rapport à afficher");
         }
 
