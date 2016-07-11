@@ -44,7 +44,13 @@
           <a href="/" title="Accueil"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
         </li>
         <li>
-          <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a></li>
+          <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
+        </li>
+        {% if is_granted("ROLE_ADMIN") %}
+        <li>
+          <a href="#">Gestion</a>
+        </li>
+        {% endif %}
           <li>
             <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
           </li>
