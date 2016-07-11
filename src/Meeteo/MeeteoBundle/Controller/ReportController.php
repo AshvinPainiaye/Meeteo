@@ -14,9 +14,21 @@ class ReportController extends Controller {
         // create a task and give it some dummy data for this example
         $report = new Report();
         $report->setDate(new \DateTime('now'));
+        /*###########################
+        * ##### COMMENTS ###########
+        * Vous pouvez chainer vos appels
+        * $report->setLat($lat)
+        *        ->setLon($lon);
+        * ###########################
+        */
         $report->setLat($lat);
         $report->setLon($lon);
-
+        /*###########################
+        * ##### COMMENTS ###########
+        * Créez vos formulaires dans une classe à part. Cela vous permettra de
+        * le réutiliser à d'autres endroit plus facilement.
+        * ###########################
+        */
         $form = $this->createFormBuilder($report)
                 ->add('weather', ChoiceType::class, array(
                   'choices' => array(
@@ -54,12 +66,20 @@ class ReportController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+          /*###########################
+          * ##### COMMENTS ###########
+          *
+          */
             // ... perform some action, such as saving the task to the database
             $report->setWeather($form->get('weather')->getData());
             $report->setTemperature($form->get('temperature')->getData());
             $report->setWind($form->get('wind')->getData());
             $report->setImageFile($form->get('imageFile')->getData());
-
+            /*
+            * les lignes ci-dessus ne sont pas nécessaires. l'affectation des données du formulaires
+            * dans l'entité se fait grâce à $form->handleRequest($request)
+            * ###########################
+            */
             $user = $this->get('security.token_storage')->getToken()->getUser();
 
             $report->setUser($user);
