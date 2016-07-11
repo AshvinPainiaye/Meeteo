@@ -54,12 +54,7 @@ class ReportController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /*
-              $report->setWeather($form->get('weather')->getData());
-              $report->setTemperature($form->get('temperature')->getData());
-              $report->setWind($form->get('wind')->getData());
-              $report->setImageFile($form->get('imageFile')->getData());
-             */
+
             // Get connected user
             $user = $this->get('security.token_storage')->getToken()->getUser();
 
