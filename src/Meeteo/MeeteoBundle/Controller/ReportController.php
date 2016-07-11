@@ -11,7 +11,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ReportController extends Controller {
 
-    public function ReportAction(Request $request, $lat, $lon) {
+    public function ReportAction(Request $request , $lat , $lon) {
         // create a task and give it some dummy data for this example
         $report = new Report();
         $report->setDate(new \DateTime('now'));
