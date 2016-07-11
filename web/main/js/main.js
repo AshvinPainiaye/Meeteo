@@ -20,13 +20,15 @@ function initMap() {
                 lng: position.coords.longitude
             };
 
+
             var marker = new google.maps.Marker({
                 position: pos,
                 map: map,
                 title: 'Hello World!'
             });
 
-          
+
+
 
             infoWindow.setPosition(pos);
             infoWindow.setContent('Vous etes ici');
