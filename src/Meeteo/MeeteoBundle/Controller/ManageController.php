@@ -13,16 +13,16 @@ class ManageController extends Controller
                 ->getRepository('MeeteoMeeteoBundle:User');
         
         // Get all users from database
-        $listeusers = $usersRepository->findAll();
+        $listeUsers = $usersRepository->findAll();
         
-        // If null raise execption
-        if (!$listeusers) {
-            throw $this->createNotFoundException("Aucun rapport à afficher");
+        // If null no user raise execption
+        if (!$listeUsers) {
+            throw $this->createNotFoundException("Aucun Utilisateur à afficher");
         }
         
         // Return listeusers to view manage.html.twig
         return $this->render('MeeteoMeeteoBundle:Manage:manage.html.twig', array(
-                    'listeusers' => $listeusers
+                    'listeUsers' => $listeUsers
         ));
     }
 
