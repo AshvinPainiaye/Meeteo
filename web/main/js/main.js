@@ -10,10 +10,16 @@ function initMap() {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
+       pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+
+      var marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        title: 'Hello World!'
+      });
 
       infoWindow.setPosition(pos);
       infoWindow.setContent('Vous etes ici');
@@ -25,6 +31,11 @@ function initMap() {
   } else {
     handleLocationError(false, infoWindow, map.getCenter());
   }
+
+
+  // Markers
+
+
 
   // DEBUT SEARCH GOOGLE MAP
 
@@ -86,10 +97,14 @@ function initMap() {
 
 }
 
+function redirectToRoute() {
+  document.location.href="/report/" + pos.lat + "/" + pos.lng;
+}
+
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
     'Error: The Geolocation service failed.' :
     'Error: Your browser doesn\'t support geolocation.');
   }
-  // FIN GOOGLE MAP API
+// FIN GOOGLE MAP API
