@@ -8,7 +8,7 @@ class ManageController extends Controller
 {
     public function ManageAction()
     {
-        // Create em for entity use
+        // Create em for entity user
         $usersRepository = $this->getDoctrine()
                 ->getRepository('MeeteoMeeteoBundle:User');
         
@@ -20,7 +20,7 @@ class ManageController extends Controller
             throw $this->createNotFoundException("Aucun rapport à afficher");
         }
         
-        // Return listereports to view manage.html.twig
+        // Return listeusers to view manage.html.twig
         return $this->render('MeeteoMeeteoBundle:Manage:manage.html.twig', array(
                     'listeusers' => $listeusers
         ));
