@@ -8,11 +8,11 @@ class ManageController extends Controller
 {
     public function ManageAction()
     {
-        // Create em for entity Report
+        // Create em for entity use
         $usersRepository = $this->getDoctrine()
                 ->getRepository('MeeteoMeeteoBundle:User');
         
-        // Get all report from database
+        // Get all users from database
         $listeusers = $usersRepository->findAll();
         
         // If null raise execption
