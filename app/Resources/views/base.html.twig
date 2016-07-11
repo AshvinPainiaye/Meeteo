@@ -45,36 +45,155 @@
         </li>
         <li>
           <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a></li>
-        <li>
-          <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
-        </li>
-        <li class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Paramètres"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-          <ul class="dropdown-menu">
-            <li><a href="/profile/change-password">Modifié mot de passe</a></li>
-            <li><a href="/profile/edit">Modifié compte</a></li>
-            <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-          </ul>
-        </li>
+          <li>
+            <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
+          </li>
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Paramètres"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="/profile/change-password">Modifié mot de passe</a></li>
+              <li><a href="/profile/edit">Modifié compte</a></li>
+              <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+            </ul>
+          </li>
 
-        {% else %}
+          {% else %}
 
-        <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
-        <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
+          <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
+          <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
 
-        {% endif %}
-      </ul>
+          {% endif %}
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
 {% endblock %}
 
 {% block body %}
 <div id="map"></div>
-{% endblock %}
 
-{% block fos_user_content %}
+<script>
+// DEBUT GOOGLE MAP API
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -21.10972, lng: 55.49639},
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  var infoWindow = new google.maps.InfoWindow({map: map});
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Vous etes ici');
+      map.setCenter(pos);
+      map.setZoom(13);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+  // DEBUT SEARCH GOOGLE MAP
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  //  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+  // FIN SEARCH GOOGLE MAP
+
+  // DEBUT MARKER REPORT
+  setMarkers(map);
+}
+var listeReports = [{% for report in listereports %}
+  [ {{report.lat}}, {{report.lon }}, 'Météo: {{report.weather}} / Temperature: {{report.temperature}} / Vent: {{report.wind}}'],
+  {% endfor %}];
+
+  function setMarkers(map) {
+    for (var i = 0; i < listeReports.length; i++) {
+      var report = listeReports[i];
+      var marker = new google.maps.Marker({
+        position: {lat: report[0], lng: report[1]},
+        map: map,
+        title: report[2],
+      });
+    }
+  }
+  // FIN MARKER REPORT
+
+  function redirectToRoute() {
+    document.location.href="/report/" + pos.lat + "/" + pos.lng;
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+    }
+    // FIN GOOGLE MAP API
+    </script>
+
+  {% endblock %}
+
+  {% block fos_user_content %}
 {% endblock %}
 
 
@@ -82,10 +201,11 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="{{asset('main/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('main/js/main.js')}}"></script>
+
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"
 async defer>
 </script>
-
 {% endblock %}
 
 
