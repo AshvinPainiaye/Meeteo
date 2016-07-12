@@ -46,7 +46,7 @@ class ReportController extends Controller {
                         4 => 'Cyclone',
                     ),
                 ))
-                ->add('imageFile', VichImageType::class, array('label' => 'Photo'))
+                ->add('imageFile', VichImageType::class, array('label' => 'Photo','required' => false))
                 ->getForm();
         
         $form->handleRequest($request);
