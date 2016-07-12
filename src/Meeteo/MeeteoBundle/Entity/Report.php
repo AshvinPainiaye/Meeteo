@@ -65,23 +65,23 @@ class Report
      * @ORM\Column(name="lon", type="float")
      */
     private $lon;
-    
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     *
      * @Vich\UploadableField(mapping="report_image", fileNameProperty="imageName")
-     * 
+     *
      * @var File
      */
     private $imageFile;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="imageName", type="string", length=255, nullable=true)
      */
     private $imageName;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
      */
@@ -264,7 +264,7 @@ class Report
     {
         return $this->imageName;
     }
-    
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
