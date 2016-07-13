@@ -152,6 +152,8 @@ function initMap() {
     });
     map.fitBounds(bounds);
   });
+
+
   // FIN SEARCH GOOGLE MAP
   // DEBUT MARKER REPORT
   setMarkers(map);
@@ -159,10 +161,7 @@ function initMap() {
 var listeReports = [{% for report in listereports %}
   [ {{report.lat}}, {{report.lon }},{{report.weather}}  ,{{report.temperature}} ,{{report.wind}}],
   {% endfor %}];
-  var shape = {
-     coords: [1, 1, 1, 20, 18, 20, 18, 1],
-     type: 'poly'
-   };
+
   function setMarkers(map) {
     var image = {
       scaledSize: new google.maps.Size(50,50), // scaled size
@@ -192,8 +191,7 @@ var listeReports = [{% for report in listereports %}
       var marker = new google.maps.Marker({
         position: {lat: listeReports[i][0], lng:listeReports[i][1]},
         map: map,
-        icon : image,
-        shape: shape
+        icon : image
       });
     }
   }
