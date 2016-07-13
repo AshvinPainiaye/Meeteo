@@ -157,7 +157,7 @@ function initMap() {
   setMarkers(map);
 }
 var listeReports = [{% for report in listereports %}
-  [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}},{{report.wind}}],
+  [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}},{{report.wind}},{{report.imageName}}],
   {% endfor %}];
   function setMarkers(map) {
     var image = {
@@ -173,7 +173,7 @@ var listeReports = [{% for report in listereports %}
         image.url = "images/tick/cloudy4.png";
       }
       else if(listeReports[i][2] === 2) {
-        image.url = "images/tick/shower4.png";
+        image.url = "images/tick/shower3.png";
       }
       else if(listeReports[i][2] === 3) {
         image.url = "images/tick/overcast.png";
@@ -189,8 +189,8 @@ var listeReports = [{% for report in listereports %}
       '</div>'+
       '<h1 id="firstHeading" class="firstHeading">Info</h1>'+
       '<div id="bodyContent">'+ 'Météo : ' +
-      listeReports[i][2] + ', Temperature : ' + listeReports[i][3] + ', Vent : ' + listeReports[i][4] +  '<img src="images/reports/'+listeReports[i][5]+'" />'+
-      '</div>'+
+       listeReports[i][2] + ', Temperature : ' + listeReports[i][3] + ', Vent : ' + listeReports[i][4] +  '<img src="images/reports/'+listeReports[i][5]+'" />'+
+       '</div>'+
       '</div>';
 console.log(listeReports);
       var infowindow = new google.maps.InfoWindow({

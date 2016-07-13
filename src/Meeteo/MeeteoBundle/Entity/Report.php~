@@ -39,16 +39,16 @@ class Report
     private $weather;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="temperature", type="string",length=255)
+     * @ORM\Column(name="temperature", type="integer")
      */
     private $temperature;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="wind", type="string",length=255)
+     * @ORM\Column(name="wind", type="integer")
      */
     private $wind;
 
@@ -78,7 +78,7 @@ class Report
     /**
      * @var string
      *
-     * @ORM\Column(name="imageName", type="string", length=255, nullable=true)
+     * @ORM\Column(name="imageName", type="string", length=255)
      */
     private $imageName;
 
@@ -148,7 +148,7 @@ class Report
     /**
      * Set temperature
      *
-     * @param string $temperature
+     * @param integer $temperature
      *
      * @return Report
      */
@@ -162,7 +162,7 @@ class Report
     /**
      * Get temperature
      *
-     * @return string
+     * @return int
      */
     public function getTemperature()
     {
@@ -172,7 +172,7 @@ class Report
     /**
      * Set wind
      *
-     * @param string $wind
+     * @param integer $wind
      *
      * @return Report
      */
@@ -186,7 +186,7 @@ class Report
     /**
      * Get wind
      *
-     * @return string
+     * @return int
      */
     public function getWind()
     {
