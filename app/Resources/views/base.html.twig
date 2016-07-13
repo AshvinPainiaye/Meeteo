@@ -157,7 +157,7 @@ function initMap() {
   setMarkers(map);
 }
 var listeReports = [{% for report in listereports %}
-  [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}},{{report.wind}}],
+  [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}},{{report.wind}},'{{report.imageName}}'],
   {% endfor %}];
 
   function setMarkers(map) {
