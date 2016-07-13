@@ -51,28 +51,28 @@
           <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
         </li>
         {% endif %}
-          <li>
-            <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
-          </li>
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Paramètres"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-            <ul class="dropdown-menu">
-              <li><a href="/profile/change-password">Modifier mot de passe</a></li>
-              <li><a href="/profile/edit">Modifier compte</a></li>
-              <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-            </ul>
-          </li>
+        <li>
+          <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
+        </li>
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Paramètres"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="/profile/change-password">Modifier mot de passe</a></li>
+            <li><a href="/profile/edit">Modifier compte</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
 
-          {% else %}
+        {% else %}
 
-          <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
-          <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
+        <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
+        <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
 
-          {% endif %}
-        </ul>
-      </div>
+        {% endif %}
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 {% endblock %}
 
@@ -152,16 +152,13 @@ function initMap() {
     });
     map.fitBounds(bounds);
   });
-
-
   // FIN SEARCH GOOGLE MAP
   // DEBUT MARKER REPORT
   setMarkers(map);
 }
 var listeReports = [{% for report in listereports %}
-  [ {{report.lat}}, {{report.lon }},{{report.weather}}  ,{{report.temperature}} ,{{report.wind}}],
+  [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}} ,{{report.wind}}],
   {% endfor %}];
-
   function setMarkers(map) {
     var image = {
       scaledSize: new google.maps.Size(50,50), // scaled size
@@ -169,29 +166,42 @@ var listeReports = [{% for report in listereports %}
       anchor: new google.maps.Point(0, 0) // anchor
     };
     for (var i = 0; i < listeReports.length; i++) {
-        if(listeReports[i][2] === 0 ){
+      if(listeReports[i][2] === 0 ){
         image.url = "images/tick/sunny.png";
-        }
-        else if(listeReports[i][2] === 1 ) {
-          image.url = "images/tick/cloudy4.png";
-        }
-        else if(listeReports[i][2] === 2) {
-          image.url = "images/tick/shower4.png";
-        }
-        else if(listeReports[i][2] === 3) {
-          image.url = "images/tick/overcast.png";
-        }
-        else if(listeReports[i][2] === 4) {
-          image.url = "images/tick/snow4.png";
-        }
-        else if(listeReports[i][2] === 5) {
-          image.url = "images/tick/hail.png";
-        }
-
+      }
+      else if(listeReports[i][2] === 1 ) {
+        image.url = "images/tick/cloudy4.png";
+      }
+      else if(listeReports[i][2] === 2) {
+        image.url = "images/tick/shower4.png";
+      }
+      else if(listeReports[i][2] === 3) {
+        image.url = "images/tick/overcast.png";
+      }
+      else if(listeReports[i][2] === 4) {
+        image.url = "images/tick/snow4.png";
+      }
+      else if(listeReports[i][2] === 5) {
+        image.url = "images/tick/hail.png";
+      }
+      var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Info</h1>'+
+      '<div id="bodyContent">'+ 'Météo : ' +
+      listeReports[0][2] + ', Temperature : ' + listeReports[0][3] + ', Vent : ' + listeReports[0][3]
+      '</div>'+
+      '</div>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+      });
       var marker = new google.maps.Marker({
         position: {lat: listeReports[i][0], lng:listeReports[i][1]},
         map: map,
-        icon : image
+        icon : image,
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
       });
     }
   }
@@ -208,21 +218,21 @@ var listeReports = [{% for report in listereports %}
     // FIN GOOGLE MAP API
     </script>
 
+    {% endblock %}
+
+    {% block fos_user_content %}
   {% endblock %}
 
-  {% block fos_user_content %}
-{% endblock %}
+
+  {% block javascripts %}
+  <script src="//code.jquery.com/jquery.min.js"></script>
+  <script src="{{asset('main/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('main/js/main.js')}}"></script>
 
 
-{% block javascripts %}
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="{{asset('main/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('main/js/main.js')}}"></script>
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"
-async defer>
-</script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"
+  async defer>
+  </script>
 {% endblock %}
 
 
