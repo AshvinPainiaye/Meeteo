@@ -48,9 +48,9 @@ class ReportController extends Controller {
                 ))
                 ->add('imageFile', VichImageType::class, array('label' => 'Photo','required' => false))
                 ->getForm();
-        
+
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             // Get connected user
             $user = $this->get('security.token_storage')->getToken()->getUser();

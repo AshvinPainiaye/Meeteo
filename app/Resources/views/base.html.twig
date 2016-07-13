@@ -159,7 +159,6 @@ function initMap() {
 var listeReports = [{% for report in listereports %}
   [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}},{{report.wind}},'{{report.imageName}}'],
   {% endfor %}];
-
   function setMarkers(map) {
     var image = {
       scaledSize: new google.maps.Size(50,50), // scaled size
@@ -185,7 +184,6 @@ var listeReports = [{% for report in listereports %}
       else if(listeReports[i][2] === 5) {
         image.url = "images/tick/hail.png";
       }
-
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
@@ -198,21 +196,17 @@ console.log(listeReports);
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
-
       var marker = new google.maps.Marker({
         position: {lat: listeReports[i][0], lng:listeReports[i][1]},
         map: map,
         icon : image,
         info: contentString
       });
-
       marker.addListener('click', function() {
         infowindow.setContent(this.info);
         infowindow.open(map, this);
       });
-
     }
-
   }
   // FIN MARKER REPORT
   function redirectToRoute() {
