@@ -184,6 +184,7 @@ var listeReports = [{% for report in listereports %}
       else if(listeReports[i][2] === 5) {
         image.url = "images/tick/hail.png";
       }
+
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
@@ -192,18 +193,23 @@ var listeReports = [{% for report in listereports %}
       listeReports[0][2] + ', Temperature : ' + listeReports[0][3] + ', Vent : ' + listeReports[0][3]
       '</div>'+
       '</div>';
+
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
+
       var marker = new google.maps.Marker({
         position: {lat: listeReports[i][0], lng:listeReports[i][1]},
         map: map,
         icon : image,
       });
+
       marker.addListener('click', function() {
-        infowindow.open(map, marker);
+        infowindow.open(map, this);
       });
+
     }
+
   }
   // FIN MARKER REPORT
   function redirectToRoute() {
