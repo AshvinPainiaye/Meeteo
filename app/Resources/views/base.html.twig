@@ -201,7 +201,7 @@ var listeReports = [{% for report in listereports %}
         icon : image,
       });
       marker.addListener('click', function() {
-        infowindow.open(map, marker);
+        infowindow.open(map, this);
       });
     }
   }
