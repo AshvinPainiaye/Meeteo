@@ -11,9 +11,9 @@ class DefaultController extends Controller {
         $listereports = $reportRepository->findAll();
 
         // If null raise execption
-        if (!$listereports) {
-            throw $this->createNotFoundException("Aucun rapport à afficher");
-        }
+        // if (!$listereports) {
+        //     throw $this->createNotFoundException("Aucun rapport à afficher");
+        // }
 
         // Return listereports to view index.html.twig
         return $this->render('MeeteoMeeteoBundle:Default:index.html.twig', array(
