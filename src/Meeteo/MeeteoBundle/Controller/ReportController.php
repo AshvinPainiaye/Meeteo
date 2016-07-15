@@ -20,37 +20,37 @@ class ReportController extends Controller {
         $form = $this->createFormBuilder($report)
                 ->add('weather', ChoiceType::class, array(
                     'choices' => array(
-                        0 => 'Ensoleillé',
-                        1 => 'Nuageux',
-                        2 => 'Pluvieux',
-                        3 => 'Brume',
-                        4 => 'Neige',
-                        5 => 'Grèle',
+                        'Ensoleillé' => 'Ensoleillé',
+                        'Nuageux' => 'Nuageux',
+                        'Pluvieux' => 'Pluvieux',
+                        'Brume' => 'Brume',
+                        'Neige' => 'Neige',
+                        'Grèle' => 'Grèle',
                     ),
                 ))
                 ->add('temperature', ChoiceType::class, array(
                     'choices' => array(
-                        0 => 'Très froid',
-                        1 => 'Froid',
-                        2 => 'Idéale',
-                        3 => 'Chaud',
-                        4 => 'Très chaud',
+                        'Très froid' => 'Très froid',
+                        'Froid' => 'Froid',
+                        'Idéale' => 'Idéale',
+                        'Chaud' => 'Chaud',
+                        'Très chaud' => 'Très chaud',
                     ),
                 ))
                 ->add('wind', ChoiceType::class, array(
                     'choices' => array(
-                        0 => 'Pas de vent',
-                        1 => 'Vent modéré',
-                        2 => 'Vent assez fort',
-                        3 => 'Vent fort',
-                        4 => 'Cyclone',
+                        'Pas de vent' => 'Pas de vent',
+                        'Vent modéré' => 'Vent modéré',
+                        'Vent assez fort' => 'Vent assez fort',
+                        'Vent fort' => 'Vent fort',
+                        'Cyclone' => 'Cyclone',
                     ),
                 ))
                 ->add('imageFile', VichImageType::class, array('label' => 'Photo','required' => false))
                 ->getForm();
-        
+
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             // Get connected user
             $user = $this->get('security.token_storage')->getToken()->getUser();

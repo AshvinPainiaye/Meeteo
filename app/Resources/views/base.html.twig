@@ -157,7 +157,7 @@ function initMap() {
   setMarkers(map);
 }
 var listeReports = [{% for report in listereports %}
-  [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}},{{report.wind}},'{{report.imageName}}'],
+  [ {{report.lat}}, {{report.lon }},'{{report.weather}}' ,'{{report.temperature}}','{{report.wind}}','{{report.imageName}}'],
   {% endfor %}];
 
   function setMarkers(map) {
@@ -167,22 +167,22 @@ var listeReports = [{% for report in listereports %}
       anchor: new google.maps.Point(0, 0) // anchor
     };
     for (var i = 0; i < listeReports.length; i++) {
-      if(listeReports[i][2] === 0 ){
+      if(listeReports[i][2] === 'Ensoleillé' ){
         image.url = "images/tick/sunny.png";
       }
-      else if(listeReports[i][2] === 1 ) {
+      else if(listeReports[i][2] === 'Nuageux' ) {
         image.url = "images/tick/cloudy4.png";
       }
-      else if(listeReports[i][2] === 2) {
+      else if(listeReports[i][2] === 'Pluvieux') {
         image.url = "images/tick/shower3.png";
       }
-      else if(listeReports[i][2] === 3) {
+      else if(listeReports[i][2] === 'Brume') {
         image.url = "images/tick/overcast.png";
       }
-      else if(listeReports[i][2] === 4) {
+      else if(listeReports[i][2] === 'Neige') {
         image.url = "images/tick/snow4.png";
       }
-      else if(listeReports[i][2] === 5) {
+      else if(listeReports[i][2] === 'Grèle') {
         image.url = "images/tick/hail.png";
       }
 
