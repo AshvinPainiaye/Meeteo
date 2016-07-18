@@ -180,6 +180,7 @@ var listeReports = [{% for report in listereports %}
       anchor: new google.maps.Point(0, 0) // anchor
     };
     for (var i = 0; i < listeReports.length; i++) {
+      {% block conditionIcon %}
       if(listeReports[i][2] === 'Ensoleillé' ){
         image.url = "images/tick/sunny.png";
       }
@@ -198,7 +199,7 @@ var listeReports = [{% for report in listereports %}
       else if(listeReports[i][2] === 'Grèle') {
         image.url = "images/tick/hail.png";
       }
-
+{% endblock %}
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
