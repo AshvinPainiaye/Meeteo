@@ -179,22 +179,25 @@ var listeReports = [{% for report in listereports %}
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     };
+
     for (var i = 0; i < listeReports.length; i++) {
 
+
+
         if( listeReports[i][3] <= 20 ){
-          image.url = ''
+          image.url = 'images/tick/1468858867_icon-68-thermometer-quarter.png'
         }
         else if (listeReports[i][3] > 20 ){
-          image.url = '';
+          image.url = 'images/tick/1468858886_icon-69-thermometer-half.png';
 
         }
-
         else if (listeReports[i][3] > 30) {
-          image.url = ""
+          image.url = "images/tick/1468858877_icon-70-thermometer-three-quarters.png"
         }
 
 
-console.log(listeReports[i][3])
+
+
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
