@@ -180,8 +180,6 @@ var listeReports = [{% for report in listereports %}
       anchor: new google.maps.Point(0, 0) // anchor
     };
     for (var i = 0; i < listeReports.length; i++) {
-
-
       if(listeReports[i][2] === 'Ensoleillé' ){
         image.url = "images/tick/sunny.png";
       }
@@ -200,8 +198,6 @@ var listeReports = [{% for report in listereports %}
       else if(listeReports[i][2] === 'Grèle') {
         image.url = "images/tick/hail.png";
       }
-
-
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
@@ -230,7 +226,6 @@ var listeReports = [{% for report in listereports %}
   function redirectToRoute() {
 document.location.href="/report/" + pos.lat + "/" + pos.lng;
   }
-
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
@@ -259,4 +254,4 @@ document.location.href="/report/" + pos.lat + "/" + pos.lng;
 
 
   </body>
-  </html>
+</html>

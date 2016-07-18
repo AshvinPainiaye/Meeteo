@@ -34,7 +34,7 @@ class Report
     /**
      * @var int
      *
-     * @ORM\Column(name="weather", type="integer")
+     * @ORM\Column(name="weather", type="string")
      */
     private $weather;
 
@@ -48,7 +48,7 @@ class Report
     /**
      * @var int
      *
-     * @ORM\Column(name="wind", type="integer")
+     * @ORM\Column(name="wind", type="string")
      */
     private $wind;
 

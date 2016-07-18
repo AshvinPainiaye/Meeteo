@@ -41,7 +41,7 @@ class Report
     /**
      * @var int
      *
-     * @ORM\Column(name="temperature", type="string")
+     * @ORM\Column(name="temperature", type="integer")
      */
     private $temperature;
 

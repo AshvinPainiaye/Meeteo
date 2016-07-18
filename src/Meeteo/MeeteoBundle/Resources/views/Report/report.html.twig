@@ -19,7 +19,8 @@
       </div>
 
       <div class="form-group">
-        {{ form_label(form.temperature) }}
+        {#{ form_label(form.temperature) }#}
+        <label for="">Température (en °C)</label>
         {{ form_widget(form.temperature, {'attr':{'class':'form-control'}}) }}
         {{ form_errors(form.temperature) }}
       </div>
