@@ -34,8 +34,19 @@
           <input id="pac-input" type="text" class="form-control controls" placeholder="Rechercher">
         </div>
       </form>
-      {% endblock map %}
+      <ul class="nav navbar-nav navbar-left">
 
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-map" aria-hidden="true"></i> Cartes <span class="caret"></span></a>
+       <ul class="dropdown-menu">
+        <li><a href="/">Carte du temps</a></li>
+         <li><a  href="/temperature">Carte des température</a></li>
+         <li><a href="/vent">Carte des vents</a></li>
+       </ul>
+      </li>
+    </ul>
+    {% endblock map %}
+    
       <ul class="nav navbar-nav navbar-right">
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -51,15 +62,6 @@
           <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
         </li>
         {% endif %}
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-map" aria-hidden="true"></i> Cartes <span class="caret"></span></a>
-         <ul class="dropdown-menu">
-          <li><a href="/">Carte du temps</a></li>
-           <li><a  href="/temperature">Carte des température</a></li>
-           <li><a href="/vent">Carte des vents</a></li>
-         </ul>
-        </li>
         <li>
           <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
         </li>
