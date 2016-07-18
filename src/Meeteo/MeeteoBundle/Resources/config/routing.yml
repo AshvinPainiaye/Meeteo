@@ -9,3 +9,12 @@ _report:
 _manage:
     path:     /Manage
     defaults: { _controller: MeeteoMeeteoBundle:Manage:Manage }
+
+_vent:
+    path:     /vent
+    defaults: { _controller: MeeteoMeeteoBundle:Default:Vents }
+
+
+_temperature:
+    path:     /temperature
+    defaults: { _controller: MeeteoMeeteoBundle:Default:Temperature }

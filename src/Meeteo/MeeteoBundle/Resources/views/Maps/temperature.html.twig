@@ -55,9 +55,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-map" aria-hidden="true"></i> Cartes <span class="caret"></span></a>
          <ul class="dropdown-menu">
-          <li><a href="/">Carte du temps</a></li>
+           <li><a href="/">Carte du temps</a></li>
            <li><a  href="/temperature">Carte des température</a></li>
-           <li><a href="/vent">Carte des vents</a></li>
+           <li><a href="/">Carte des vents</a></li>
          </ul>
         </li>
         <li>
@@ -181,27 +181,20 @@ var listeReports = [{% for report in listereports %}
     };
     for (var i = 0; i < listeReports.length; i++) {
 
+        if( listeReports[i][3] <= 20 ){
+          image.url = ''
+        }
+        else if (listeReports[i][3] > 20 ){
+          image.url = '';
 
-      if(listeReports[i][2] === 'Ensoleillé' ){
-        image.url = "images/tick/sunny.png";
-      }
-      else if(listeReports[i][2] === 'Nuageux' ) {
-        image.url = "images/tick/cloudy4.png";
-      }
-      else if(listeReports[i][2] === 'Pluvieux') {
-        image.url = "images/tick/shower3.png";
-      }
-      else if(listeReports[i][2] === 'Brume') {
-        image.url = "images/tick/overcast.png";
-      }
-      else if(listeReports[i][2] === 'Neige') {
-        image.url = "images/tick/snow4.png";
-      }
-      else if(listeReports[i][2] === 'Grèle') {
-        image.url = "images/tick/hail.png";
-      }
+        }
+
+        else if (listeReports[i][3] > 30) {
+          image.url = ""
+        }
 
 
+console.log(listeReports[i][3])
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
@@ -230,7 +223,6 @@ var listeReports = [{% for report in listereports %}
   function redirectToRoute() {
     document.location.href="/report/" + pos.lat + "/" + pos.lng;
   }
-
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?

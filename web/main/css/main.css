@@ -48,7 +48,15 @@ html, body {
 /* FIN NAV */
 /* DEBUT GOOGLE MAP */
 #map {
-  height: 91%; }
+  z-index: 0;
+  height: 91%;
+  position: relative;overflow: hidden;
+
+ }
+
+ .cards {
+   z-index: 1;
+ }
 
 /* debut search */
 .controls {
