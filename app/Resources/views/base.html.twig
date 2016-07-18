@@ -189,12 +189,12 @@ var listeReports = [{% for report in listereports %}
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Info</h1>'+
-      '<div id="bodyContent">'+ 'Météo : ' +
-      listeReports[i][2] + ', Temperature : ' + listeReports[i][3] + ', Vent : ' + listeReports[i][4] +  '<img src="images/reports/'+listeReports[i][5]+'" />'+
+      '<h1 id="firstHeading" class="firstHeading text-center">Info</h1>'+
+      '<div id="bodyContent">'+ 'Temps : ' +
+      listeReports[i][2] + '<br/>Temperature : ' + listeReports[i][3] + '<br/>Vent : ' + listeReports[i][4] +  '<br/><img class="center-block" style="margin-top:20px; margin-bottom: 20px;" src="images/reports/'+listeReports[i][5]+'" />'+
       '</div>'+
       '</div>';
-console.log(listeReports);
+      console.log(listeReports);
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
@@ -242,8 +242,8 @@ console.log(listeReports);
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"
     asysnc defer>
     </script>
-  {% endblock %}
+    {% endblock %}
 
 
-</body>
-</html>
+  </body>
+  </html>
