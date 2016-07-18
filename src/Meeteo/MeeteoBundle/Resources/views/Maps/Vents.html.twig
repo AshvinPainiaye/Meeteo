@@ -55,7 +55,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-map" aria-hidden="true"></i> Cartes <span class="caret"></span></a>
          <ul class="dropdown-menu">
-          <li><a href="/">Carte du temps</a></li>
+           <li><a href="/">Carte du temps</a></li>
            <li><a  href="/temperature">Carte des température</a></li>
            <li><a href="/vent">Carte des vents</a></li>
          </ul>
@@ -182,23 +182,20 @@ var listeReports = [{% for report in listereports %}
     for (var i = 0; i < listeReports.length; i++) {
 
 
-      if(listeReports[i][2] === 'Ensoleillé' ){
+      if(listeReports[i][4] === 'Pas de Vent' ){
         image.url = "images/tick/sunny.png";
       }
-      else if(listeReports[i][2] === 'Nuageux' ) {
-        image.url = "images/tick/cloudy4.png";
+      else if(listeReports[i][4] === 'Vent modéré' ) {
+        image.url = "images/tick/weather-1.png";
       }
-      else if(listeReports[i][2] === 'Pluvieux') {
-        image.url = "images/tick/shower3.png";
+      else if(listeReports[i][4] === 'Vent assez fort') {
+        image.url = "images/tick/weather-2.png";
       }
-      else if(listeReports[i][2] === 'Brume') {
-        image.url = "images/tick/overcast.png";
+      else if(listeReports[i][4] === 'Vent fort') {
+        image.url = "images/tick/weather-3.png";
       }
-      else if(listeReports[i][2] === 'Neige') {
-        image.url = "images/tick/snow4.png";
-      }
-      else if(listeReports[i][2] === 'Grèle') {
-        image.url = "images/tick/hail.png";
+      else if(listeReports[i][4] === 'Cyclone') {
+        image.url = "images/tick/weather.png";
       }
 
 
@@ -210,7 +207,7 @@ var listeReports = [{% for report in listereports %}
       listeReports[i][2] + '<br/>Temperature : ' + listeReports[i][3] + '<br/>Vent : ' + listeReports[i][4] +  '<br/><img class="center-block" style="margin-top:20px; margin-bottom: 20px;" src="images/reports/'+listeReports[i][5]+'" />'+
       '</div>'+
       '</div>';
-      // console.log(listeReports);
+      console.log(listeReports);
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
@@ -228,9 +225,8 @@ var listeReports = [{% for report in listereports %}
   }
   // FIN MARKER REPORT
   function redirectToRoute() {
-document.location.href="/report/" + pos.lat + "/" + pos.lng;
+    document.location.href="/report/" + pos.lat + "/" + pos.lng;
   }
-
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?

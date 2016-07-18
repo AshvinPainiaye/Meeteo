@@ -13,3 +13,12 @@ _manage:
 _edit:
     path:     /Manage/edit
     defaults: { _controller: MeeteoMeeteoBundle:Manage:Manage }
+
+_vent:
+    path:     /vent
+    defaults: { _controller: MeeteoMeeteoBundle:Default:Vents }
+
+
+_temperature:
+    path:     /temperature
+    defaults: { _controller: MeeteoMeeteoBundle:Default:Temperature }
