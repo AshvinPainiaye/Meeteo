@@ -157,7 +157,7 @@ function initMap() {
   setMarkers(map);
 }
 var listeReports = [{% for report in listereports %}
-  [ {{report.lat}}, {{report.lon }},{{report.weather}} ,{{report.temperature}},{{report.wind}},'{{report.imageName}}'],
+  [ {{report.lat}}, {{report.lon }},'{{report.weather}}' ,'{{report.temperature}}','{{report.wind}}','{{report.imageName}}'],
   {% endfor %}];
   function setMarkers(map) {
     var image = {
@@ -166,33 +166,33 @@ var listeReports = [{% for report in listereports %}
       anchor: new google.maps.Point(0, 0) // anchor
     };
     for (var i = 0; i < listeReports.length; i++) {
-      if(listeReports[i][2] === 0 ){
+      if(listeReports[i][2] === 'Ensoleillé' ){
         image.url = "images/tick/sunny.png";
       }
-      else if(listeReports[i][2] === 1 ) {
+      else if(listeReports[i][2] === 'Nuageux' ) {
         image.url = "images/tick/cloudy4.png";
       }
-      else if(listeReports[i][2] === 2) {
+      else if(listeReports[i][2] === 'Pluvieux') {
         image.url = "images/tick/shower3.png";
       }
-      else if(listeReports[i][2] === 3) {
+      else if(listeReports[i][2] === 'Brume') {
         image.url = "images/tick/overcast.png";
       }
-      else if(listeReports[i][2] === 4) {
+      else if(listeReports[i][2] === 'Neige') {
         image.url = "images/tick/snow4.png";
       }
-      else if(listeReports[i][2] === 5) {
+      else if(listeReports[i][2] === 'Grèle') {
         image.url = "images/tick/hail.png";
       }
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Info</h1>'+
-      '<div id="bodyContent">'+ 'Météo : ' +
-      listeReports[i][2] + ', Temperature : ' + listeReports[i][3] + ', Vent : ' + listeReports[i][4] +  '<img src="images/reports/'+listeReports[i][5]+'" />'+
+      '<h1 id="firstHeading" class="firstHeading text-center">Info</h1>'+
+      '<div id="bodyContent">'+ 'Temps : ' +
+      listeReports[i][2] + '<br/>Temperature : ' + listeReports[i][3] + '<br/>Vent : ' + listeReports[i][4] +  '<br/><img class="center-block" style="margin-top:20px; margin-bottom: 20px;" src="images/reports/'+listeReports[i][5]+'" />'+
       '</div>'+
       '</div>';
-console.log(listeReports);
+      console.log(listeReports);
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
@@ -236,8 +236,8 @@ console.log(listeReports);
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"
     asysnc defer>
     </script>
-  {% endblock %}
+    {% endblock %}
 
 
-</body>
-</html>
+  </body>
+  </html>
