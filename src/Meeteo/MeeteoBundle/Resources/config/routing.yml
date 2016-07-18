@@ -9,3 +9,7 @@ _report:
 _manage:
     path:     /Manage
     defaults: { _controller: MeeteoMeeteoBundle:Manage:Manage }
+
+_edit:
+    path:     /Manage/edit
+    defaults: { _controller: MeeteoMeeteoBundle:Manage:Manage }

@@ -194,7 +194,7 @@ var listeReports = [{% for report in listereports %}
       listeReports[i][2] + '<br/>Temperature : ' + listeReports[i][3] + '<br/>Vent : ' + listeReports[i][4] +  '<br/><img class="center-block" style="margin-top:20px; margin-bottom: 20px;" src="images/reports/'+listeReports[i][5]+'" />'+
       '</div>'+
       '</div>';
-      console.log(listeReports);
+      // console.log(listeReports);
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
@@ -212,11 +212,10 @@ var listeReports = [{% for report in listereports %}
       });
 
     }
-
   }
   // FIN MARKER REPORT
   function redirectToRoute() {
-    document.location.href="/report/" + pos.lat + "/" + pos.lng;
+document.location.href="/report/" + pos.lat + "/" + pos.lng;
   }
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);

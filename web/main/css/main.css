@@ -45,6 +45,17 @@ html, body {
       color: #051a42;
       background-color: transparent; }
 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #051a42; }
+
+.navbar-collapse {
+  box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0.1); }
+
+.navbar-form {
+  border: 0px solid transparent;
+  -webkit-box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0.1), 0 0px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0.1), 0 0px 0 rgba(255, 255, 255, 0.1); }
+
 /* FIN NAV */
 /* DEBUT GOOGLE MAP */
 #map {
