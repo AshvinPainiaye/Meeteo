@@ -187,7 +187,7 @@ var listeReports = [{% for report in listereports %}
         if( listeReports[i][3] <= 20 ){
           image.url = 'images/tick/1468858867_icon-68-thermometer-quarter.png'
         }
-        else if (listeReports[i][3] > 20 ){
+        else if (listeReports[i][3] > 20 && listeReports[i][3] <= 30 ){
           image.url = 'images/tick/1468858886_icon-69-thermometer-half.png';
 
         }
