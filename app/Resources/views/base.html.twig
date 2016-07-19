@@ -25,7 +25,9 @@
           <i class="material-icons">close</i>
         </div>
       </form>
+
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
 
       <ul class="left hide-on-med-and-down">
         <li>
@@ -87,7 +89,7 @@
         <li>
           <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
         </li>
-        
+
         {% if is_granted('ROLE_ADMIN') %}
         <li>
           <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
@@ -137,7 +139,7 @@ function initMap() {
       infoWindow.setPosition(pos);
       infoWindow.setContent('Vous etes ici');
       map.setCenter(pos);
-      map.setZoom(13);
+      map.setZoom(10);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -263,6 +265,8 @@ var listeReports = [{% for report in listereports %}
       'Error: Your browser doesn\'t support geolocation.');
     }
     // FIN GOOGLE MAP API
+
+
     </script>
 
     {% endblock %}
@@ -275,6 +279,7 @@ var listeReports = [{% for report in listereports %}
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="{{asset('main/materialize/js/materialize.min.js')}}"></script>
     <script src="{{asset('main/js/main.js')}}"></script>
+
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"
