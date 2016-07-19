@@ -1,192 +1,42 @@
-$couleur1: #051a42;
+$couleur1: #0d47a1;
 
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
 }
 
-/* DEBUT NAV */
-.navbar-default{
-  background-color:$couleur1;
-  border:none;
-  margin-bottom: 0;
-  border-radius: 0;
-  .navbar-toggle {
-    border:none;
-    float: left;
-    background-color:#07296a;
-    padding: 18px 18px;
-    margin-top: 0;
-    border-radius: 0;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    &:hover,&:focus{
-      background-color:#07296a;
-    }
-    .icon-bar {
-      background-color: #ffffff;
-    }
-  }
-  .navbar-brand{
-    color: #ffffff;
-    &:focus, &:hover{
-      color: #ffffff;
-      opacity: 0.7;
-    }
-  }
-  .navbar-nav {
-    li {
-      a {
-        color: #ffffff;
-        &:focus, &:hover{
-          color: #ffffff;
-          opacity: 0.7;
-        }
-      }
-    }
-    .dropdown-menu {
-      li {
-        a {
-          display: block;
-          padding: 3px 20px;
-          clear: both;
-          font-weight: 400;
-          line-height: 1.42857143;
-          color: #333;
-          white-space: nowrap;
-          &:hover{
-            color:$couleur1;
-            background-color:transparent;
-          }
-        }
-      }
-    }
-  }
+a {
+  color: $couleur1;
 }
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: $couleur1;
-}
-.navbar-collapse{
-  box-shadow: inset 0 0px 0 rgba(255,255,255,.1);
-}
-.navbar-form {
-  border: 0px solid transparent;
-  -webkit-box-shadow: inset 0 0px 0 rgba(255,255,255,.1),0 0px 0 rgba(255,255,255,.1);
-  box-shadow: inset 0 0px 0 rgba(255,255,255,.1),0 0px 0 rgba(255,255,255,.1);
-}
-/* FIN NAV */
 
+.dropdown-content li > a, .dropdown-content li > span {
+  color: $couleur1;
+}
+
+// .brand-logo{
+//   opacity: 0.5;
+// }
 
 /* DEBUT GOOGLE MAP */
 #map {
-  height: 91%
+  height: 90%;
+  width:100%;
 }
-
-/* debut search */
-.controls {
-  border: 1px solid transparent;
-  border-radius: 0;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  height: 32px;
-  outline: none;
-}
-
-#pac-input {
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-  margin-left: 12px;
-  padding: 0 11px 0 13px;
-  text-overflow: ellipsis;
-  width: 300px;
-}
-
-#pac-input:focus {
-  border-color: #ffffff;
-}
-
-.pac-container {
-  font-family: Roboto;
-}
-
-#type-selector {
-  color: #fff;
-  background-color: #ffffff;
-  padding: 5px 11px 0px 11px;
-}
-
-#type-selector label {
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 300;
-}
-
-#target {
-  width: 345px;
-}
-
-/* fin search */
-
 /* FIN GOOGLE MAP */
 
 
-
 /* DEBUT FORMULAIRE */
-
 #formulaire{
-  form{
-    margin-top:50px;
-    #username,#password{
-      border-radius: 0;
-      background-color: #fff;
-      width: 300px;
-      border:2px solid $couleur1;
-      margin-left: 12px;
-      padding: 0 11px 0 13px;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      height: 40px;
-      outline: none;
-    }
-    #fos_user_registration_form_email, #fos_user_registration_form_username, #fos_user_registration_form_plainPassword_first, #fos_user_registration_form_plainPassword_second, #fos_user_change_password_form_current_password, #fos_user_change_password_form_plainPassword_first, #fos_user_change_password_form_plainPassword_second, #fos_user_profile_form_username, #fos_user_profile_form_email, #fos_user_profile_form_current_password{
-      border-radius: 0;
-      background-color: #fff;
-      width: 100%;
-      border:2px solid $couleur1;
-      margin-left: 12px;
-      padding: 0 11px 0 13px;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      height: 40px;
-      outline: none;
-    }
-    #form_weather, #form_temperature, #form_wind{
-      border-radius: 0;
-      background-color: #fff;
-      width: 100%;
-      border:2px solid $couleur1;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      height: 40px;
-      outline: none;
-    }
-  }
+  margin-top: 60px;
 }
-
-
 /* FIN FORMULAIRE */
 
 
 /* DEBUT GESTION */
-
 #gestion{
   table{
     margin-top:50px;
   }
 }
-
 /* FIN GESTION */
