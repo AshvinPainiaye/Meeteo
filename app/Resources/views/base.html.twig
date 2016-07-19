@@ -46,7 +46,7 @@
       </li>
     </ul>
     {% endblock map %}
-    
+
       <ul class="nav navbar-nav navbar-right">
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -113,7 +113,7 @@ function initMap() {
       infoWindow.setPosition(pos);
       infoWindow.setContent('Vous etes ici');
       map.setCenter(pos);
-      map.setZoom(13);
+      map.setZoom(10);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -237,6 +237,8 @@ document.location.href="/report/" + pos.lat + "/" + pos.lng;
       'Error: Your browser doesn\'t support geolocation.');
     }
     // FIN GOOGLE MAP API
+
+
     </script>
 
     {% endblock %}
@@ -249,6 +251,7 @@ document.location.href="/report/" + pos.lat + "/" + pos.lng;
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="{{asset('main/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('main/js/main.js')}}"></script>
+    
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"

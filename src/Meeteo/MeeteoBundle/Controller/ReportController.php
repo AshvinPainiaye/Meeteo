@@ -27,6 +27,7 @@ class ReportController extends Controller {
         'Neige' => 'Neige',
         'Grèle' => 'Grèle',
       ),
+      
     ))
     ->add('temperature', ChoiceType::class, array(
       'choices' => array(
