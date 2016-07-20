@@ -12,7 +12,7 @@ _manage:
 
 _edit:
     path:     /Manage/{id}/edit
-defaults: { _controller: MeeteoMeeteoBundle:Manage:Edit }
+    defaults: { _controller: MeeteoMeeteoBundle:Manage:Edit }
 
 _vent:
     path:     /vent
