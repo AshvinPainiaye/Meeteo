@@ -15,102 +15,66 @@
 <body>
 
 {% block header %}
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper light-blue darken-4">
+
+<nav>
+  <div class="container"><a href="#" data-activates="mobile-demo" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a></div>
+  <ul class="side-nav fixed" id="mobile-demo">
+    <li><h1 class="center-align"><i class="fa fa-sun-o" aria-hidden="true" style="color: #f65314"></i><br> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1></li>
+    {% block search %}
+    <hr>
+    <li>
       <form>
-        <div class="brand-logo center input-field">
+        <div class="input-field">
           <input id="pac-input" type="search" placeholder="Rechercher">
           <label for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
+
         </div>
       </form>
+    </li>
 
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    {% endblock search %}
+    <hr>
 
+    <li>
+      <a href="/" title="Accueil"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+    </li>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <li>
+      <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
+    </li>
 
-      <ul class="left hide-on-med-and-down">
-        <li>
-          <a href="/" title="Accueil"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
-        </li>
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <li>
-          <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
-        </li>
-        {% endif %}
+  {% endif %}
+  <hr>
+  {% block carte %}
+  <li><a href="/">Carte du temps</a></li>
+  <li><a  href="/temperature">Carte des température</a></li>
+  <li><a href="/vent">Carte des vents</a></li>
+  <hr>
+  {% endblock %}
+  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-        {% block map %}
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><i class="fa fa-map" aria-hidden="true"></i> Cartes <i class="material-icons right">arrow_drop_down</i></a></li>
-        <ul id="dropdown2" class="dropdown-content">
-          <li><a href="/">Carte du temps</a></li>
-          <li><a  href="/temperature">Carte des température</a></li>
-          <li><a href="/vent">Carte des vents</a></li>
-        </ul>
-        {% endblock map %}
-      </ul>
+  {% if is_granted('ROLE_ADMIN') %}
+  <li>
+    <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
+  </li>
+  {% endif %}
+  <li>
+    <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
+  </li>
 
-      <ul class="right hide-on-med-and-down">
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+  <li><a href="{{ path('fos_user_security_logout') }}" title="Déconnexion"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
 
-        {% if is_granted('ROLE_ADMIN') %}
-        <li>
-          <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
-        </li>
-        {% endif %}
-        <li>
-          <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
-        </li>
+  {% else %}
 
-        <li><a href="{{ path('fos_user_security_logout') }}" title="Déconnexion"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+  <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
+  <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
 
-        {% else %}
-        <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
-        <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
+  {% endif %}
 
-        {% endif %}
-      </ul>
+</ul>
 
-      <ul class="side-nav" id="mobile-demo">
-        <li>
-          <a href="/" title="Accueil"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
-        </li>
-
-        {% block mapMobile %}
-
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown3"><i class="fa fa-map" aria-hidden="true"></i> Cartes <i class="material-icons right">arrow_drop_down</i></a></li>
-        <ul id="dropdown3" class="dropdown-content">
-          <li><a href="/">Carte du temps</a></li>
-          <li><a  href="/temperature">Carte des température</a></li>
-          <li><a href="/vent">Carte des vents</a></li>
-        </ul>
-        {% endblock mapMobile %}
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-        <li>
-          <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
-        </li>
-
-        {% if is_granted('ROLE_ADMIN') %}
-        <li>
-          <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
-        </li>
-        {% endif %}
-        <li>
-          <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
-        </li>
-        <li><a href="{{ path('fos_user_security_logout') }}" title="Déconnexion"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
-      </ul>
-
-      {% else %}
-
-      <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
-      <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
-
-      {% endif %}
-    </ul>
-  </div>
 </nav>
-</div>
 
 
 {% endblock %}
@@ -118,7 +82,6 @@
 {% block body %}
 
 <div id="map">
-
 </div>
 
 <script>
@@ -139,7 +102,7 @@ function initMap() {
       infoWindow.setPosition(pos);
       infoWindow.setContent('Vous etes ici');
       map.setCenter(pos);
-      map.setZoom(10);
+      map.setZoom(13);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -149,7 +112,6 @@ function initMap() {
   // DEBUT SEARCH GOOGLE MAP
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
-
   var searchBox = new google.maps.places.SearchBox(input);
   //  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   // Bias the SearchBox results towards current map's viewport.
@@ -196,7 +158,6 @@ function initMap() {
     map.fitBounds(bounds);
   });
   // FIN SEARCH GOOGLE MAP
-
   // DEBUT MARKER REPORT
   setMarkers(map);
 }
@@ -265,8 +226,6 @@ var listeReports = [{% for report in listereports %}
       'Error: Your browser doesn\'t support geolocation.');
     }
     // FIN GOOGLE MAP API
-
-
     </script>
 
     {% endblock %}
@@ -279,7 +238,6 @@ var listeReports = [{% for report in listereports %}
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="{{asset('main/materialize/js/materialize.min.js')}}"></script>
     <script src="{{asset('main/js/main.js')}}"></script>
-
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"

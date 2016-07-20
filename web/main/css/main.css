@@ -3,18 +3,42 @@ html, body {
   margin: 0;
   padding: 0; }
 
-a {
-  color: #0d47a1; }
+body {
+  margin-left: 240px; }
 
-.dropdown-content li > a, .dropdown-content li > span {
+a {
   color: #0d47a1; }
 
 /* DEBUT GOOGLE MAP */
 #map {
-  height: 90%;
-  width: 100%; }
+  height: 100%; }
 
 /* FIN GOOGLE MAP */
+/* DEBUT MENU DE NAVIGATION */
+nav {
+  height: 0 !important;
+  line-height: 0 !important; }
+  nav h1 {
+    font-size: 30px;
+    margin: 20px auto 25px auto;
+    color: #444;
+    line-height: 10px; }
+  nav hr {
+    background-color: #d9d9d9;
+    height: 1px;
+    border: none; }
+  nav .input-field label {
+    top: -0.2rem; }
+  nav .input-field input[type="search"] ~ .material-icons {
+    top: -0.3rem; }
+  nav .input-field input[type="search"] {
+    padding-left: 0rem !important;
+    text-align: center;
+    width: 100%; }
+  nav ul li a {
+    font-size: 15px !important; }
+
+/* FIN MENU DE NAVIGATION */
 /* DEBUT FORMULAIRE */
 #formulaire {
   margin-top: 60px; }
@@ -25,5 +49,18 @@ a {
   margin-top: 50px; }
 
 /* FIN GESTION */
+/* DEBUT MEDIA QUERIES */
+@media (max-width: 992px) {
+  #map {
+    height: 88%; }
+
+  body {
+    margin-left: 0px; }
+
+  nav {
+    background-color: #0d47a1 !important;
+    height: 64px !important;
+    line-height: 64px !important; } }
+/* FIN MEDIA QUERIES */
 
 /*# sourceMappingURL=main.css.map */

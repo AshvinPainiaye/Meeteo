@@ -1,4 +1,3 @@
-
 meeteo_meeteo_homepage:
     path:     /
     defaults: { _controller: MeeteoMeeteoBundle:Default:index }
@@ -12,8 +11,8 @@ _manage:
     defaults: { _controller: MeeteoMeeteoBundle:Manage:Manage }
 
 _edit:
-    path:     /Manage/{id}/edit
-    defaults: { _controller: MeeteoMeeteoBundle:Manage:Edit }
+    path:     /Manage/edit
+    defaults: { _controller: MeeteoMeeteoBundle:Manage:Manage }
 
 _vent:
     path:     /vent
