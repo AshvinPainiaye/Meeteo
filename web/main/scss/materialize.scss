@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+// Mixins
+// @import "components/prefixer";
+@import "components/mixins";
+@import "components/color";
+
+// Variables;
+@import "components/variables";
+
+// Reset
+@import "components/normalize";
+
+// components
+@import "components/global";
+@import "components/icons-material-design";
+@import "components/grid";
+@import "components/navbar";
+@import "components/roboto";
+@import "components/typography";
+@import "components/cards";
+@import "components/toast";
+@import "components/tabs";
+@import "components/tooltip";
+@import "components/buttons";
+@import "components/dropdown";
+@import "components/waves";
+@import "components/modal";
+@import "components/collapsible";
+@import "components/chips";
+@import "components/materialbox";
+@import "components/forms/forms";
+@import "components/table_of_contents";
+@import "components/sideNav";
+@import "components/preloader";
+@import "components/slider";
+@import "components/carousel";
+@import "components/date_picker/default";
+@import "components/date_picker/default.date";
+@import "components/date_picker/default.time";
+
+
+
+
+// MAIN
+
+// Variables;
+//@import "components/variables";
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body{
+  margin-left: 240px;
+}
+
+
+/* DEBUT GOOGLE MAP */
+#map {
+  height: 100%;
+}
+/* FIN GOOGLE MAP */
+
+/* DEBUT MENU DE NAVIGATION */
+nav{
+  height: 0 !important;
+  line-height: 0 !important;
+  h1{
+    font-size:30px;
+    margin: 20px auto 25px auto;
+    color: #444;
+    line-height: 10px;
+  }
+  hr{
+    background-color:#d9d9d9;
+    height: 1px;
+    border:none;
+  }
+  .input-field label{
+    top: -0.2rem;
+  }
+  .input-field input[type="search"] ~ .material-icons {
+    top: -0.3rem;
+  }
+  .input-field input[type="search"] {
+    padding-left: 0rem !important;
+    text-align: center;
+    width:100%;
+  }
+  ul{
+    li{
+      a{
+        font-size:15px !important;
+      }
+    }
+  }
+}
+.fa.fa-home, .fa.fa-pencil-square-o, .fa.fa-wrench, .fa.fa-user, .fa.fa-sign-out{
+  font-size:20px;
+  margin-right:20px;
+}
+.wi.wi-tornado{
+  font-size:25px;
+  margin-right:23px;
+}
+
+.wi.wi-day-cloudy-windy{
+  font-size:17px;
+  margin-right:13px;
+}
+
+.wi.wi-thermometer{
+  font-size:20px;
+  margin-right:23px;
+  margin-left:5px;
+}
+.side-nav a:hover {
+    background-color: transparent !important;
+    color: #f65314;
+}
+/* FIN MENU DE NAVIGATION */
+
+/* DEBUT FORMULAIRE */
+#formulaire{
+  margin-top: 60px;
+}
+/* FIN FORMULAIRE */
+
+/* DEBUT GESTION */
+#gestion{
+  table{
+    margin-top:50px;
+  }
+}
+
+.editRoles{
+  label{
+    margin-right:100px;
+  }
+}
+/* FIN GESTION */
+
+/* DEBUT MEDIA QUERIES */
+@media (max-width: 992px) {
+  #map {
+    height: 88%;
+  }
+  body{
+    margin-left: 0px;
+  }
+  nav{
+    background-color: #ffffff !important;
+    height: 64px !important;
+    line-height: 64px !important;
+  }
+}
+/* FIN MEDIA QUERIES */

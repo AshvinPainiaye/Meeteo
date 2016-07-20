@@ -6,6 +6,7 @@
   <title>{% block title %}Meeteo{% endblock %}</title>
   {% block stylesheets %}
   <link rel="stylesheet" href="{{asset('main/font-awesome/css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{asset('main/weather-icons/css/weather-icons.min.css')}}">
   <link rel="stylesheet" href="{{asset('main/materialize/css/materialize.min.css')}}">
   <link rel="stylesheet" href="{{asset('main/css/main.css')}}">
   <link rel="stylesheet" href="{{asset('http://fonts.googleapis.com/icon?family=Material+Icons')}}">
@@ -17,9 +18,9 @@
 {% block header %}
 
 <nav>
-  <div class="container"><a href="#" data-activates="mobile-demo" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a></div>
+  <div class="container"><a href="#" data-activates="mobile-demo" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons" style="color: #000;">menu</i></a></div>
   <ul class="side-nav fixed" id="mobile-demo">
-    <li><h1 class="center-align"><i class="fa fa-sun-o" aria-hidden="true" style="color: #f65314"></i><br> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1></li>
+    <li><h1 class="center-align"><i class="fa fa-globe" aria-hidden="true" style="color: #f65314"></i><br> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1></li>
     {% block search %}
     <hr>
     <li>
@@ -37,7 +38,7 @@
     <hr>
 
     <li>
-      <a href="/" title="Accueil"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+      <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
     </li>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     <li>
@@ -47,9 +48,9 @@
   {% endif %}
   <hr>
   {% block carte %}
-  <li><a href="/">Carte du temps</a></li>
-  <li><a  href="/temperature">Carte des température</a></li>
-  <li><a href="/vent">Carte des vents</a></li>
+  <li><a href="/"><i class="wi wi-day-cloudy-windy" aria-hidden="true"></i> Climat</a></li>
+  <li><a  href="/temperature"> <i class="wi wi-thermometer"></i> Température</a></li>
+  <li><a href="/vent"><i class="wi wi-tornado"></i> Vent</a></li>
   <hr>
   {% endblock %}
   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -60,10 +61,10 @@
   </li>
   {% endif %}
   <li>
-    <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
+    <a href="/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
   </li>
 
-  <li><a href="{{ path('fos_user_security_logout') }}" title="Déconnexion"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
+  <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
 
   {% else %}
 

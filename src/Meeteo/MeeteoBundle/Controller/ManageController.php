@@ -31,12 +31,11 @@ class ManageController extends Controller
                   'multiple' => true,
                   'expanded' => true,
                   'choices' => array(
-                    'ROLE_ADMIN'=>'ROLE_ADMIN',
-                      'ROLE_METEOROLOGUE'=>'ROLE_METEOROLOGUE',
-
+                    'ROLE_ADMIN'=>'ADMIN',
+                      'ROLE_METEOROLOGUE'=>'METEOROLOGUE',
                   ),
               ))
-      ->add('save' , 'submit')
+      // ->add('save' , 'submit')
       ->getForm();
       $editForm->handleRequest($request);
       if ($editForm->isSubmitted() && $editForm->isValid()) {
