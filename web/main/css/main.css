@@ -6161,13 +6161,18 @@ body {
 
 /* FIN GOOGLE MAP */
 /* DEBUT MENU DE NAVIGATION */
+a.button-collapse.top-nav {
+  margin-left: 0; }
+
 nav {
   height: 0 !important;
   line-height: 0 !important; }
+  nav .button-collapse i {
+    height: 66px;
+    line-height: 66px; }
   nav h1 {
     font-size: 30px;
     margin: 20px auto 25px auto;
-    color: #444;
     line-height: 10px; }
   nav hr {
     background-color: #d9d9d9;
@@ -6184,7 +6189,7 @@ nav {
   nav ul li a {
     font-size: 15px !important; }
 
-.fa.fa-home, .fa.fa-pencil-square-o, .fa.fa-wrench, .fa.fa-user, .fa.fa-sign-out {
+.fa.fa-home, .fa.fa-pencil-square-o, .fa.fa-wrench, .fa.fa-user, .fa.fa-sign-in, .fa.fa-edit, .fa.fa-sign-out {
   font-size: 20px;
   margin-right: 20px; }
 

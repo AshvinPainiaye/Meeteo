@@ -40,13 +40,7 @@
 @import "components/date_picker/default.time";
 
 
-
-
 // MAIN
-
-// Variables;
-//@import "components/variables";
-
 
 html, body {
   height: 100%;
@@ -64,14 +58,21 @@ body{
 }
 /* FIN GOOGLE MAP */
 
+
 /* DEBUT MENU DE NAVIGATION */
+a.button-collapse.top-nav {
+  margin-left:0;
+}
 nav{
   height: 0 !important;
   line-height: 0 !important;
+  .button-collapse i {
+      height: 66px;
+      line-height: 66px;
+  }
   h1{
     font-size:30px;
     margin: 20px auto 25px auto;
-    color: #444;
     line-height: 10px;
   }
   hr{
@@ -98,7 +99,7 @@ nav{
     }
   }
 }
-.fa.fa-home, .fa.fa-pencil-square-o, .fa.fa-wrench, .fa.fa-user, .fa.fa-sign-out{
+.fa.fa-home, .fa.fa-pencil-square-o, .fa.fa-wrench, .fa.fa-user, .fa.fa-sign-in, .fa.fa-edit, .fa.fa-sign-out{
   font-size:20px;
   margin-right:20px;
 }
@@ -123,11 +124,13 @@ nav{
 }
 /* FIN MENU DE NAVIGATION */
 
+
 /* DEBUT FORMULAIRE */
 #formulaire{
   margin-top: 60px;
 }
 /* FIN FORMULAIRE */
+
 
 /* DEBUT GESTION */
 #gestion{
@@ -142,6 +145,7 @@ nav{
   }
 }
 /* FIN GESTION */
+
 
 /* DEBUT MEDIA QUERIES */
 @media (max-width: 992px) {
