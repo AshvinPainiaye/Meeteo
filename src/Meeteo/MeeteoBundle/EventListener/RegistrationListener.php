@@ -34,6 +34,7 @@ class RegistrationListener implements EventSubscriberInterface {
         $user = $event->getForm()->getData();
 
         $user->addRole('ROLE_METEOROLOGUE');
+        
 
         $url = $this->router->generate('homepage');
 

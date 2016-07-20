@@ -41,14 +41,29 @@ class ManageController extends Controller
       $editForm = $this->createFormBuilder($user)
       ->add('username', 'text')
       ->add('email', 'text')
-      ->add('save', 'submit')
+      ->add('roles', 'choice', array(
+                  'multiple' => true,
+                  'expanded' => true,
+                  'choices' => array(
+                    'ROLE_ADMIN'=>'ROLE_ADMIN',
+                      'ROLE_METEOROLOGUE'=>'ROLE_METEOROLOGUE',
+                    
+                  ),
+              ))
+      ->add('save' , 'submit')
       ->getForm();
+
+
+
 
 
       $editForm->handleRequest($request);
 
 
       if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+
+
         $em->flush();
 
         return $this->redirectToRoute('_manage');
@@ -59,5 +74,7 @@ class ManageController extends Controller
 
 
     }
+
+
 
 }
