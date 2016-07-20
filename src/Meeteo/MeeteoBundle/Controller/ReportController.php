@@ -27,7 +27,6 @@ class ReportController extends Controller {
         'Neige' => 'Neige',
         'Grèle' => 'Grèle',
       ),
-      
     ))
     ->add('temperature', ChoiceType::class, array(
       'choices' => array(
@@ -98,7 +97,7 @@ class ReportController extends Controller {
         'Cyclone' => 'Cyclone',
       ),
     ))
-    ->add('imageFile', VichImageType::class, array('label' => 'Photo','required' => false))
+    ->add('imageFile', VichImageType::class, array('label' => ' ','required' => false))
     ->getForm();
 
     $form->handleRequest($request);

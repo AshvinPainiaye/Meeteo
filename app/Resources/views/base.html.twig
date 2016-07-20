@@ -6,8 +6,9 @@
   <title>{% block title %}Meeteo{% endblock %}</title>
   {% block stylesheets %}
   <link rel="stylesheet" href="{{asset('main/font-awesome/css/font-awesome.min.css')}}">
-  <link rel="stylesheet" href="{{asset('main/bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('main/materialize/css/materialize.min.css')}}">
   <link rel="stylesheet" href="{{asset('main/css/main.css')}}">
+  <link rel="stylesheet" href="{{asset('http://fonts.googleapis.com/icon?family=Material+Icons')}}">
 {% endblock %}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -15,84 +16,72 @@
 
 {% block header %}
 
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/"><i class="fa fa-sun-o" aria-hidden="true"></i> Meeteo</a>
-    </div>
+<nav>
+  <div class="container"><a href="#" data-activates="mobile-demo" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a></div>
+  <ul class="side-nav fixed" id="mobile-demo">
+    <li><h1 class="center-align"><i class="fa fa-sun-o" aria-hidden="true" style="color: #f65314"></i><br> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1></li>
+    {% block search %}
+    <hr>
+    <li>
+      <form>
+        <div class="input-field">
+          <input id="pac-input" type="search" placeholder="Rechercher">
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      {% block map %}
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input id="pac-input" type="text" class="form-control controls" placeholder="Rechercher">
         </div>
       </form>
-      <ul class="nav navbar-nav navbar-left">
+    </li>
 
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-map" aria-hidden="true"></i> Cartes <span class="caret"></span></a>
-       <ul class="dropdown-menu">
-        <li><a href="/">Carte du temps</a></li>
-         <li><a  href="/temperature">Carte des température</a></li>
-         <li><a href="/vent">Carte des vents</a></li>
-       </ul>
-      </li>
-    </ul>
-    {% endblock map %}
+    {% endblock search %}
+    <hr>
 
-      <ul class="nav navbar-nav navbar-right">
+    <li>
+      <a href="/" title="Accueil"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+    </li>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <li>
+      <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
+    </li>
 
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+  {% endif %}
+  <hr>
+  {% block carte %}
+  <li><a href="/">Carte du temps</a></li>
+  <li><a  href="/temperature">Carte des température</a></li>
+  <li><a href="/vent">Carte des vents</a></li>
+  <hr>
+  {% endblock %}
+  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-        <li>
-          <a href="/" title="Accueil"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
-        </li>
-        <li>
-          <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
-        </li>
-        {% if is_granted('ROLE_ADMIN') %}
-        <li>
-          <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
-        </li>
-        {% endif %}
-        <li>
-          <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
-        </li>
-        <li class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Paramètres"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-          <ul class="dropdown-menu">
-            <li><a href="/profile/change-password">Modifier mot de passe</a></li>
-            <li><a href="/profile/edit">Modifier compte</a></li>
-            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-          </ul>
-        </li>
+  {% if is_granted('ROLE_ADMIN') %}
+  <li>
+    <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
+  </li>
+  {% endif %}
+  <li>
+    <a href="/profile" title="Profil"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
+  </li>
 
-        {% else %}
+  <li><a href="{{ path('fos_user_security_logout') }}" title="Déconnexion"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
 
-        <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
-        <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
+  {% else %}
 
-        {% endif %}
-      </ul>
-    </div>
-  </div>
+  <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
+  <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
+
+  {% endif %}
+
+</ul>
+
 </nav>
+
 
 {% endblock %}
 
 {% block body %}
+
 <div id="map">
-
-
-
-
 </div>
 
 <script>
@@ -113,7 +102,7 @@ function initMap() {
       infoWindow.setPosition(pos);
       infoWindow.setContent('Vous etes ici');
       map.setCenter(pos);
-      map.setZoom(10);
+      map.setZoom(13);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -201,7 +190,7 @@ var listeReports = [{% for report in listereports %}
       else if(listeReports[i][2] === 'Grèle') {
         image.url = "images/tick/hail.png";
       }
-{% endblock %}
+      {% endblock %}
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
@@ -228,7 +217,7 @@ var listeReports = [{% for report in listereports %}
   }
   // FIN MARKER REPORT
   function redirectToRoute() {
-document.location.href="/report/" + pos.lat + "/" + pos.lng;
+    document.location.href="/report/" + pos.lat + "/" + pos.lng;
   }
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
@@ -237,8 +226,6 @@ document.location.href="/report/" + pos.lat + "/" + pos.lng;
       'Error: Your browser doesn\'t support geolocation.');
     }
     // FIN GOOGLE MAP API
-
-
     </script>
 
     {% endblock %}
@@ -249,16 +236,24 @@ document.location.href="/report/" + pos.lat + "/" + pos.lng;
 
     {% block javascripts %}
     <script src="//code.jquery.com/jquery.min.js"></script>
-    <script src="{{asset('main/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('main/materialize/js/materialize.min.js')}}"></script>
     <script src="{{asset('main/js/main.js')}}"></script>
-    
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcLrM9KgEVlnNV6FS4gkjN-_XGHReLIHg&libraries=places&callback=initAutocomplete&callback=initMap"
     asysnc defer>
     </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $(".button-collapse").sideNav();
+      $(".dropdown-button").dropdown();
+      $('select').material_select();
+    })
+    </script>
+
     {% endblock %}
 
 
   </body>
-</html>
+  </html>
