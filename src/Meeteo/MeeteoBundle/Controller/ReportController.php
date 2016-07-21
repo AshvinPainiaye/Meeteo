@@ -103,8 +103,10 @@ class ReportController extends Controller {
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      // Get connected user
-      $user = $this->get('security.token_storage')->getToken()->getUser();
+        // Get token
+        $token = $this->get('security.token_storage')->getToken();
+        // Get our user from that token
+        $user = $token->getUser();
       // Set user for report, save to database and redirect to homepage
       $report->setUser($user);
       $em = $this->getDoctrine()->getEntityManager();
