@@ -6178,8 +6178,10 @@ nav {
     background-color: #d9d9d9;
     height: 1px;
     border: none; }
+  nav input#pac-input {
+    height: 44px; }
   nav .input-field label {
-    top: -0.2rem; }
+    top: -5px; }
   nav .input-field input[type="search"] ~ .material-icons {
     top: -0.3rem; }
   nav .input-field input[type="search"] {

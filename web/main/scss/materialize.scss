@@ -67,8 +67,8 @@ nav{
   height: 0 !important;
   line-height: 0 !important;
   .button-collapse i {
-      height: 66px;
-      line-height: 66px;
+    height: 66px;
+    line-height: 66px;
   }
   h1{
     font-size:30px;
@@ -80,8 +80,14 @@ nav{
     height: 1px;
     border:none;
   }
+
+  input#pac-input {
+    height: 44px;
+  }
   .input-field label{
-    top: -0.2rem;
+    // top: -0.2rem;
+    top: -5px;
+
   }
   .input-field input[type="search"] ~ .material-icons {
     top: -0.3rem;
@@ -119,8 +125,8 @@ nav{
   margin-left:5px;
 }
 .side-nav a:hover {
-    background-color: transparent !important;
-    color: #f65314;
+  background-color: transparent !important;
+  color: #f65314;
 }
 /* FIN MENU DE NAVIGATION */
 
