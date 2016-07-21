@@ -10,10 +10,6 @@ class ManageController extends Controller {
     public function ManageAction() {
         // Get our "authorization_checker" Object
         $auth_checker = $this->get('security.authorization_checker');
-        // Get our Token (representing the currently logged in user)
-        //$token = $this->get('security.token_storage')->getToken();
-        // Get our user from that token
-        //$user = $token->getUser();
         // Check for Roles on the $auth_checker
         $isRoleAdmin = $auth_checker->isGranted('ROLE_ADMIN');
 
