@@ -1,5 +1,5 @@
 meeteo_meeteo_homepage:
-    path:     /
+    path:     /{weatheroption}
     defaults: { _controller: MeeteoMeeteoBundle:Default:index }
 
 _report:
