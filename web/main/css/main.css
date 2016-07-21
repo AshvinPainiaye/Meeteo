@@ -6161,12 +6161,11 @@ body {
 
 /* FIN GOOGLE MAP */
 /* DEBUT MENU DE NAVIGATION */
-a.button-collapse.top-nav {
-  margin-left: 0; }
-
 nav {
   height: 0 !important;
   line-height: 0 !important; }
+  nav a.button-collapse.top-nav {
+    margin-left: 0; }
   nav .button-collapse i {
     height: 66px;
     line-height: 66px; }
@@ -6178,39 +6177,34 @@ nav {
     background-color: #d9d9d9;
     height: 1px;
     border: none; }
-  nav input#pac-input {
+  nav .side-nav li .input-field #pac-input {
     height: 44px; }
-  nav .input-field label {
+  nav .side-nav li .input-field label {
     top: -5px; }
-  nav .input-field input[type="search"] ~ .material-icons {
+  nav .side-nav li .input-field input[type="search"] ~ .material-icons {
     top: -0.3rem; }
-  nav .input-field input[type="search"] {
+  nav .side-nav li .input-field input[type="search"] {
     padding-left: 0rem !important;
     text-align: center;
     width: 100%; }
-  nav ul li a {
+  nav .side-nav li a {
     font-size: 15px !important; }
-
-.fa.fa-home, .fa.fa-pencil-square-o, .fa.fa-wrench, .fa.fa-user, .fa.fa-sign-in, .fa.fa-edit, .fa.fa-sign-out {
-  font-size: 20px;
-  margin-right: 20px; }
-
-.wi.wi-tornado {
-  font-size: 25px;
-  margin-right: 23px; }
-
-.wi.wi-day-cloudy-windy {
-  font-size: 17px;
-  margin-right: 13px; }
-
-.wi.wi-thermometer {
-  font-size: 20px;
-  margin-right: 23px;
-  margin-left: 5px; }
-
-.side-nav a:hover {
-  background-color: transparent !important;
-  color: #f65314; }
+    nav .side-nav li a .fa.fa-home, nav .side-nav li a .fa.fa-pencil-square-o, nav .side-nav li a .fa.fa-wrench, nav .side-nav li a .fa.fa-user, nav .side-nav li a .fa.fa-sign-in, nav .side-nav li a .fa.fa-edit, nav .side-nav li a .fa.fa-sign-out {
+      font-size: 20px;
+      margin-right: 20px; }
+    nav .side-nav li a .wi.wi-tornado {
+      font-size: 25px;
+      margin-right: 23px; }
+    nav .side-nav li a .wi.wi-day-cloudy-windy {
+      font-size: 17px;
+      margin-right: 13px; }
+    nav .side-nav li a .wi.wi-thermometer {
+      font-size: 20px;
+      margin-right: 23px;
+      margin-left: 5px; }
+    nav .side-nav li a:hover {
+      background-color: transparent !important;
+      color: #f65314; }
 
 /* FIN MENU DE NAVIGATION */
 /* DEBUT FORMULAIRE */
@@ -6229,7 +6223,7 @@ nav {
 /* DEBUT MEDIA QUERIES */
 @media (max-width: 992px) {
   #map {
-    height: 88%; }
+    height: 89%; }
 
   body {
     margin-left: 0px; }
