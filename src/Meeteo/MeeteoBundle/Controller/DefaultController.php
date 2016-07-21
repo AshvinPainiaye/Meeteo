@@ -1,48 +1,21 @@
 <?php
+
 namespace Meeteo\MeeteoBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 class DefaultController extends Controller {
-    public function indexAction() {
+
+    public function indexAction($weatheroption) {
         // Create em for entity Report
         $reportRepository = $this->getDoctrine()
                 ->getRepository('MeeteoMeeteoBundle:Report');
         // Get all report from database
         $listereports = $reportRepository->findAll();
+
         // Return listereports to view index.html.twig
         return $this->render('MeeteoMeeteoBundle:Default:index.html.twig', array(
-                    'listereports' => $listereports
+                    'listereports' => $listereports, 'weatheroption' => $weatheroption
         ));
     }
-
-
-    public function VentsAction() {
-
-      // Create em for entity Report
-      $reportRepository = $this->getDoctrine()
-              ->getRepository('MeeteoMeeteoBundle:Report');
-      // Get all report from database
-      $listereports = $reportRepository->findAll();
-
-      // Return listereports to view index.html.twig
-
-      return $this->render('MeeteoMeeteoBundle:Maps:Vents.html.twig', array(
-                  'listereports' => $listereports
-      ));
-    }
-
-    public function TemperatureAction() {
-
-      // Create em for entity Report
-      $reportRepository = $this->getDoctrine()
-              ->getRepository('MeeteoMeeteoBundle:Report');
-      // Get all report from database
-      $listereports = $reportRepository->findAll();
-
-      // Return listereports to view index.html.twig
-
-      return $this->render('MeeteoMeeteoBundle:Maps:temperature.html.twig', array(
-                  'listereports' => $listereports
-      ));
-    }
-
 }
