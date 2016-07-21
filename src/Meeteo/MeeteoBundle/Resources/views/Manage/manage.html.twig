@@ -27,7 +27,7 @@
               <td>{{user.username}}</td>
               <td>{{user.email}}</td>
               <td>{{ user.roles|join(', ') }}</td>
-               <td><a class="btn btn-xs btn-default" href="{{ path('_edit', {'id':  user.id  }) }}"><i class="fa fa-edit"></i> </a></td>
+              <td><a class="btn-floating waves-effect waves-light" href="{{ path('_edit', {'id':  user.id  }) }}"><i class="material-icons">mode_edit</i></a></td>
             </tr>
             {% endfor %}
           </tbody>

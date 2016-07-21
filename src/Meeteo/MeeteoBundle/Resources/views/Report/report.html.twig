@@ -5,70 +5,74 @@
 {% block body %}
 <section id="formulaire">
 
-<div class="container">
-  <div class="row">
-    <div class="col s8 offset-s2">
+  <div class="container">
+    <div class="row">
+      <div class="col s8 offset-s2">
 
-      {{ form_start(form) }}
+        {{ form_start(form) }}
 
-      <div class="row">
-        <div class="input-field col s12">
-          {#{ form_label(form.weather) }#}
-          {{ form_widget(form.weather, {'attr':{'class':'validate'}}) }}
-          <label>Météo</label>
-          {{ form_errors(form.weather) }}
+        <div class="row">
+          <div class="input-field col s12">
+            {#{ form_label(form.weather) }#}
+            {{ form_widget(form.weather, {'attr':{'class':'validate'}}) }}
+            <label>Météo</label>
+            {{ form_errors(form.weather) }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            {#{ form_label(form.temperature) }#}
+            {{ form_widget(form.temperature, {'attr':{'class':'validate'}}) }}
+            <label>Température (en °C)</label>
+
+            {{ form_errors(form.temperature) }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            {#{ form_label(form.wind) }#}
+            <!-- <label for="">Vent</label> -->
+            {{ form_widget(form.wind, {'attr':{'class':'validate'}}) }}
+            <label>Vent</label>
+            {{ form_errors(form.wind) }}
+          </div>
+        </div>
+
+        <!-- <div class="row">
+        <div class="input-field col s8">
+        {#{ form_label(form.imageFile) }#}
+        {#{ form_widget(form.imageFile) }#}
+        {#{ form_errors(form.imageFile) }#}
+      </div>
+    </div> -->
+    <div class="row">
+
+      <div class="file-field input-field col s12">
+
+        <div class="btn-floating btn-large waves-effect waves-light" style="width:45px !important">
+          <!-- <div class="btn waves-effect waves-light"> -->
+
+          <i class="material-icons" style="top:-4px !important; position: relative;">attach_file</i>
+          {{ form_widget(form.imageFile) }}
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
         </div>
       </div>
 
-      <div class="row">
-        <div class="input-field col s12">
-          {#{ form_label(form.temperature) }#}
-          {{ form_widget(form.temperature, {'attr':{'class':'validate'}}) }}
-          <label>Température (en °C)</label>
-
-          {{ form_errors(form.temperature) }}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          {#{ form_label(form.wind) }#}
-          <!-- <label for="">Vent</label> -->
-          {{ form_widget(form.wind, {'attr':{'class':'validate'}}) }}
-          <label>Vent</label>
-          {{ form_errors(form.wind) }}
-        </div>
-      </div>
-
-      <!-- <div class="row">
-      <div class="input-field col s8">
-      {#{ form_label(form.imageFile) }#}
-      {#{ form_widget(form.imageFile) }#}
-      {#{ form_errors(form.imageFile) }#}
     </div>
-  </div> -->
-  <div class="row">
-
-    <div class="file-field input-field col s12">
-      <div class="btn waves-effect waves-light">
-        <i class="material-icons">attach_file</i>
-        {{ form_widget(form.imageFile) }}
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
-
-  </div>
 
 
-  <!-- <div>
+    <!-- <div>
     <input type="submit" class="btn btn-success" value="Notifier"/>
   </div> -->
-
-  <button class="btn waves-effect waves-light" type="submit">Notifier
-    <i class="material-icons right">send</i>
-  </button>
+  <div class="row" style="text-align:center;">
+    <button class="btn-floating btn-large waves-effect waves-light" type="submit">
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
 
   {#{ form_widget(form) }#}
   {{ form_end(form) }}
