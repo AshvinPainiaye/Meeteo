@@ -63,6 +63,15 @@ body{
 nav{
   height: 0 !important;
   line-height: 0 !important;
+  .fb-share-button{
+    margin-top: 20px;
+    // margin-bottom: 30px;
+    text-align: center;
+    line-height: 44px;
+    height: 44px;
+    padding: 0 74px;
+  }
+
   a.button-collapse.top-nav {
     margin-left:0;
   }

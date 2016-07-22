@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Ashvin PAINIAYE, Frederic JOUAN, Ludovic DIEUDONNE">
+  <!-- You can use Open Graph tags to customize link previews.
+  Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url"           content="https://meeteo.simplonreunion.co" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Meeteo" />
+  <meta property="og:description"   content="Meeteo est uneapplication de météo crowdsourcée et géolocalisée." />
+  <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
   <title>{% block title %}Meeteo{% endblock %}</title>
   {% block stylesheets %}
   <link rel="stylesheet" href="{{asset('main/font-awesome/css/font-awesome.min.css')}}">
@@ -16,68 +23,95 @@
 </head>
 <body>
 
-{% block header %}
+  <div id="fb-root"></div>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1801194333500391',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
 
-<nav>
-  <div class="container"><a href="#" data-activates="mobile-demo" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons" style="color: #616161;">menu</i></a></div>
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/fr_FR/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
 
-  <h1 class="brand-logo hide-on-large-only"><i class="fa fa-globe" aria-hidden="true" style="color: #f65314"></i> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1>
 
-  <ul class="side-nav fixed" id="mobile-demo">
-    <li><h1 class="center-align"><i class="fa fa-globe" aria-hidden="true" style="color: #f65314"></i><br> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1></li>
-    {% block search %}
-    <hr>
-    <li>
-      <form>
-        <div class="input-field">
-          <input id="pac-input" type="search" placeholder="Rechercher">
-          <label for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
+  {% block header %}
+
+  <nav>
+    <div class="container"><a href="#" data-activates="mobile-demo" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons" style="color: #616161;">menu</i></a></div>
+
+    <h1 class="brand-logo hide-on-large-only"><i class="fa fa-globe" aria-hidden="true" style="color: #f65314"></i> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1>
+
+    <ul class="side-nav fixed" id="mobile-demo">
+      <li><h1 class="center-align"><i class="fa fa-globe" aria-hidden="true" style="color: #f65314"></i><br> <span style="color:#7cbb00">M</span><span style="color:#00a1f1">e</span><span style="color:#ffbb00">e</span><span style="color:#7cbb00">t</span><span style="color:#f65314">e</span><span style="color:#00a1f1">o</span> </h1></li>
+      {% block search %}
+      <hr>
+      <li>
+        <form>
+          <div class="input-field">
+            <input id="pac-input" type="search" placeholder="Rechercher">
+            <label for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </li>
+
+      {% endblock search %}
+      <hr>
+
+      <li>
+        <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+      </li>
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      <li>
+        <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
+      </li>
+
+      {% endif %}
+      <hr>
+      {% block carte %}
+      <li><a href="/"><i class="wi wi-day-cloudy-windy" aria-hidden="true"></i> Climat</a></li>
+      <li><a  href="/temperature"> <i class="wi wi-thermometer"></i> Température</a></li>
+      <li><a href="/vent"><i class="wi wi-tornado"></i> Vent</a></li>
+      <hr>
+      {% endblock %}
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+      {% if is_granted('ROLE_ADMIN') %}
+      <li>
+        <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
+      </li>
+      {% endif %}
+      <li>
+        <a href="/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
+      </li>
+
+      <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
+
+      {% else %}
+
+      <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
+      <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
+
+      {% endif %}
+      
+      <!-- facebook-->
+      <li>
+        <div class="fb-share-button center-align"
+        data-href="https://meeteo.simplonreunion.co"
+        data-layout="button_count">
+      </div>
     </li>
-
-    {% endblock search %}
-    <hr>
-
-    <li>
-      <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
-    </li>
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    <li>
-      <a href="#" onclick="redirectToRoute()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Notifier</a>
-    </li>
-
-    {% endif %}
-    <hr>
-    {% block carte %}
-    <li><a href="/"><i class="wi wi-day-cloudy-windy" aria-hidden="true"></i> Climat</a></li>
-    <li><a  href="/temperature"> <i class="wi wi-thermometer"></i> Température</a></li>
-    <li><a href="/vent"><i class="wi wi-tornado"></i> Vent</a></li>
-    <hr>
-    {% endblock %}
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-    <li>
-      <a href="/Manage"><i class="fa fa-wrench" aria-hidden="true"></i> Gestion</a>
-    </li>
-    {% endif %}
-    <li>
-      <a href="/profile"><i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}</a>
-    </li>
-
-    <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
-
-    {% else %}
-
-    <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
-    <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
-
-    {% endif %}
 
   </ul>
-
 </nav>
 
 
