@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Ashvin PAINIAYE, Frederic JOUAN, Ludovic DIEUDONNE">
+  <!-- You can use Open Graph tags to customize link previews.
+  Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url"           content="https://meeteo.simplonreunion.co" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Meeteo" />
+  <meta property="og:description"   content="Meeteo est uneapplication de météo crowdsourcée et géolocalisée." />
+  <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
   <title>{% block title %}Meeteo{% endblock %}</title>
   {% block stylesheets %}
   <link rel="stylesheet" href="{{asset('main/font-awesome/css/font-awesome.min.css')}}">
@@ -16,6 +23,25 @@
 </head>
 <body>
 
+  <div id="fb-root"></div>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1801194333500391',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/fr_FR/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
+  
 {% block header %}
 
 <nav>
@@ -75,6 +101,14 @@
     <li><a href="/register"><i class="fa fa-edit" aria-hidden="true"></i> Inscription</a></li>
 
     {% endif %}
+
+    <!-- facebook-->
+    <li>
+      <div class="fb-share-button center-align"
+      data-href="https://meeteo.simplonreunion.co"
+      data-layout="button_count">
+    </div>
+  </li>
 
   </ul>
 
