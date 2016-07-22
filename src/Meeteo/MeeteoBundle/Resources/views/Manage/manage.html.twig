@@ -5,44 +5,44 @@
 
 {% block body %}
 
-    <div id="map" style="visibility: hidden;position:absolute;display: none;">
+<div id="map" style="visibility: hidden;position:absolute;display: none;">
+</div>
+<section id="gestion">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <table class="bordered">
+          <thead>
+            <tr>
+              <th>Nom d'utilisateur</th>
+              <th>Email</th>
+              <th>Roles</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for user in listeUsers %}
+            <tr>
+              <td>{{user.username}}</td>
+              <td>{{user.email}}</td>
+              {% if 'ROLE_SUPER_ADMIN' in user.roles %}
+              <td>Super administrateur</td>
+              {% elseif 'ROLE_ADMIN' in user.roles %}
+              <td>Administrateur</td>
+              {% elseif 'ROLE_METEOROLOGUE' in user.roles %}
+              <td>Météorologue</td>
+              {% elseif 'ROLE_USER' in user.roles %}
+              <td>Utilisateur</td>
+              {% endif %}
+              <td><a class="btn-floating waves-effect waves-light" href="{{ path('_edit', {'id':  user.id  }) }}"><i class="material-icons">mode_edit</i></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
-    <section id="gestion">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <table class="bordered">
-                        <thead>
-                            <tr>
-                                <th>Nom d'utilisateur</th>
-                                <th>Email</th>
-                                <th>Roles</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+  </div>
+</section>
 
-                        <tbody>
-                            {% for user in listeUsers %}
-                                <tr>
-                                    <td>{{user.username}}</td>
-                                    <td>{{user.email}}</td>
-                                    {% if 'ROLE_SUPER_ADMIN' in user.roles %}
-                                        <td>Super administrateur</td>
-                                    {% elseif 'ROLE_ADMIN' in user.roles %}
-                                        <td>Administrateur</td>
-                                    {% elseif 'ROLE_METEOROLOGUE' in user.roles %}
-                                        <td>Météorologue</td>
-                                    {% elseif 'ROLE_USER' in user.roles %}
-                                        <td>Utilisateur</td>
-                                    {% endif %}
-                                        <td><a class="btn-floating waves-effect waves-light" href="{{ path('_edit', {'id':  user.id  }) }}"><i class="material-icons">mode_edit</i></a></td>
-                                    </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {% endblock %}
+{% endblock %}
