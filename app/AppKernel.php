@@ -15,7 +15,7 @@ class AppKernel extends Kernel {
             new Meeteo\MeeteoBundle\MeeteoMeeteoBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new HWI\Bundle\OAuthBundle\HWIOAuthBundle()
+          
         );
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
