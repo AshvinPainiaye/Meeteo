@@ -114,7 +114,7 @@ function initMap() {
       infoWindow.setPosition(pos);
       infoWindow.setContent('Vous etes ici');
       map.setCenter(pos);
-      map.setZoom(11);
+      map.setZoom(13);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -174,7 +174,7 @@ function initMap() {
   setMarkers(map);
 }
 var listeReports = [{% for report in listereports %}
-  [ {{report.lat}}, {{report.lon }},'{{report.weather}}' ,'{{report.temperature}}','{{report.wind}}','{{report.imageName}}','{{report.date|date("H")}} heures et {{report.date|date("i")}} minutes'],
+  [ {{report.lat}}, {{report.lon }},'{{report.weather}}' ,'{{report.temperature}}','{{report.wind}}','{{report.imageName}}'],
   {% endfor %}];
   function setMarkers(map) {
     var image = {
@@ -206,11 +206,12 @@ var listeReports = [{% for report in listereports %}
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      // '<h1 id="firstHeading" class="firstHeading text-center">Info</h1>'+
-      '<div id="bodyContent">'+ '<img class="center-block" style="margin-top:20px; margin-bottom: 20px;" src="images/reports/'+listeReports[i][5]+'" />' + '<strong>Temps :</strong> ' +
-      listeReports[i][2] + '<br/><strong>Temperature :</strong> ' + listeReports[i][3] + '°C' + '<br/><strong>Vent :</strong> ' + listeReports[i][4] + '<br><br><span style="font-size:10px;">Posté à ' + listeReports[i][6] + '</span>' +
+      '<h1 id="firstHeading" class="firstHeading text-center">Info</h1>'+
+      '<div id="bodyContent">'+ 'Temps : ' +
+      listeReports[i][2] + '<br/>Temperature : ' + listeReports[i][3] + '°C' + '<br/>Vent : ' + listeReports[i][4] +  '<br/> <img class="center-block" style="margin-top:20px; margin-bottom: 20px; " src="images/reports/'+listeReports[i][5]+'" />'+
       '</div>'+
       '</div>';
+      // console.log(listeReports);
       var infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
