@@ -170,4 +170,13 @@ nav{
     line-height: 64px !important;
   }
 }
+
+@media #{$small-and-down} {
+  #gestion{
+    table{
+       display: block;
+      overflow-x: auto;
+    }
+  }
+ }
 /* FIN MEDIA QUERIES */

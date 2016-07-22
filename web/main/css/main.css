@@ -6237,6 +6237,10 @@ nav {
     background-color: #ffffff !important;
     height: 64px !important;
     line-height: 64px !important; } }
+@media only screen and (max-width: 600px) {
+  #gestion table {
+    display: block;
+    overflow-x: auto; } }
 /* FIN MEDIA QUERIES */
 
 /*# sourceMappingURL=main.css.map */
