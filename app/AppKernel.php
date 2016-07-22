@@ -18,7 +18,6 @@ class AppKernel extends Kernel {
             new Meeteo\MeeteoBundle\MeeteoMeeteoBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
