@@ -1,25 +1,24 @@
 <?php
+
 namespace Meeteo\MeeteoBundle\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 class ManageController extends Controller {
+
     public function ManageAction() {
-        // Get our "authorization_checker" Object
-        $auth_checker = $this->get('security.authorization_checker');
-        // Check for Roles on the $auth_checker
-        $isRoleAdmin = $auth_checker->isGranted('ROLE_ADMIN');
-        if ($isRoleAdmin) {
             // Create em for entity user
             $usersRepository = $this->getDoctrine()
                     ->getRepository('MeeteoMeeteoBundle:User');
             // Get all users from database
             $listeUsers = $usersRepository->findAll();
-        }
-        // Return listeusers to view manage.html.twig
-        return $this->render('MeeteoMeeteoBundle:Manage:manage.html.twig', array(
-                    'listeUsers' => $listeUsers
-        ));
+            // Return listeusers to view manage.html.twig
+            return $this->render('MeeteoMeeteoBundle:Manage:manage.html.twig', array(
+                        'listeUsers' => $listeUsers
+            ));
     }
+
     public function EditAction($id, Request $request) {
         // Get our "authorization_checker" Object
         $auth_checker = $this->get('security.authorization_checker');
@@ -50,4 +49,5 @@ class ManageController extends Controller {
             return $this->render('MeeteoMeeteoBundle:Edit:edit.html.twig', $build);
         }
     }
+
 }
