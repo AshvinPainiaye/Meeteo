@@ -26,7 +26,8 @@
             <tr>
               <td>{{user.username}}</td>
               <td>{{user.email}}</td>
-              <td>{{ user.roles|join(', ') }}</td>
+              <td>{{ user.roles|join(', ') }}
+              </td>
               <td><a class="btn-floating waves-effect waves-light" href="{{ path('_edit', {'id':  user.id  }) }}"><i class="material-icons">mode_edit</i></a></td>
             </tr>
             {% endfor %}
